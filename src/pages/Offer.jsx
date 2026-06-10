@@ -900,7 +900,7 @@ export default function OfferPage() {
                 Creatives. Funnels. Automation. Ads.
               </p>
               <div className="offer-footer-socials">
-                <a href="https://instagram.com/harshustler" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a href="https://instagram.com/wstatemedia" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" /></svg>
                 </a>
                 <a href="https://wa.me/917839661372" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
@@ -937,8 +937,8 @@ export default function OfferPage() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://instagram.com/harshustler" target="_blank" rel="noopener noreferrer">
-                    📸 @harshustler
+                  <a href="https://instagram.com/wstatemedia" target="_blank" rel="noopener noreferrer">
+                    📸 @wstatemedia
                   </a>
                 </li>
               </ul>
