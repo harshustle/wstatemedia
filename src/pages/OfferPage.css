@@ -182,6 +182,7 @@ html, body {
   display: inline-block;
   color: #55829b; /* matching blue/teal */
   padding: 0;
+  white-space: nowrap;
 }
 
 .offer-page .hero h1 span.brand-highlight::after {
@@ -367,6 +368,242 @@ html, body {
 }
 
 /* HOW IT WORKS SECTION */
+.how-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.how-step-card {
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid rgba(26, 26, 26, 0.05);
+  background: var(--bg-cream-light);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.how-step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.how-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.how-step-num {
+  font-size: 11px;
+  font-weight: 900;
+  color: #55829b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.how-step-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: var(--dark);
+}
+
+.how-step-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--soft-gray);
+  margin-bottom: 20px;
+}
+
+.how-step-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.how-step-points li {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.how-step-points li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #55829b;
+  font-weight: 800;
+}
+
+.how-steps-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.how-step-card--expandable {
+  cursor: pointer;
+}
+
+.how-step-card--expanded {
+  grid-column: 1 / -1;
+  border-color: rgba(85, 130, 155, 0.25);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.how-step-toggle {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px dashed rgba(85, 130, 155, 0.4);
+  border-radius: 10px;
+  background: rgba(85, 130, 155, 0.06);
+  color: #55829b;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.how-step-toggle:hover {
+  background: rgba(85, 130, 155, 0.12);
+  border-color: #55829b;
+}
+
+.how-step-workflow {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.how-workflow-title {
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #55829b;
+  margin-bottom: 20px;
+}
+
+.how-workflow-item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  position: relative;
+}
+
+.how-workflow-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.how-workflow-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.how-workflow-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #55829b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.how-workflow-connector {
+  width: 2px;
+  flex: 1;
+  min-height: 24px;
+  background: rgba(85, 130, 155, 0.25);
+  margin-top: 4px;
+}
+
+.how-workflow-content {
+  padding-bottom: 4px;
+}
+
+.how-workflow-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.how-workflow-phase {
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #55829b;
+  background: rgba(85, 130, 155, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.how-workflow-time {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--soft-gray);
+}
+
+.how-workflow-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+.how-workflow-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--soft-gray);
+  margin: 0;
+}
+
+@media (min-width: 901px) {
+  .how-step-card--expanded .how-step-workflow {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 32px;
+    align-items: start;
+  }
+
+  .how-step-card--expanded .how-workflow-title {
+    grid-column: 1 / -1;
+  }
+
+  .how-step-card--expanded .how-workflow-item {
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+  }
+
+  .how-step-card--expanded .how-workflow-connector {
+    display: none;
+  }
+}
+
 .how-it-works-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -488,8 +725,17 @@ html, body {
   background: var(--primary);
 }
 
+@media (max-width: 1100px) {
+  .how-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .how-it-works-grid {
+    grid-template-columns: 1fr;
+  }
+  .how-steps-grid {
     grid-template-columns: 1fr;
   }
   .how-card.card-dark {
@@ -623,6 +869,181 @@ html, body {
 }
 
 /* WHY WORK WITH US */
+.why-us-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.why-us-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.why-us-reason {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--bg-cream-light);
+  border: 1px solid rgba(26, 26, 26, 0.05);
+  border-radius: 14px;
+  padding: 20px 22px;
+  transition: all 0.25s ease;
+}
+
+.why-us-reason:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.why-us-reason-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(85, 130, 155, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.why-us-reason h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+.why-us-reason p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--soft-gray);
+  margin: 0;
+}
+
+.why-us-proof {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.why-us-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.why-us-stat {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  border: 1px solid rgba(26, 26, 26, 0.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+}
+
+.why-us-stat-value {
+  font-size: 28px;
+  font-weight: 900;
+  color: #55829b;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.why-us-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--soft-gray);
+  line-height: 1.3;
+}
+
+.why-us-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.why-us-compare-col {
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.why-us-compare-col--old {
+  background: rgba(26, 26, 26, 0.04);
+  border: 1px solid rgba(26, 26, 26, 0.06);
+}
+
+.why-us-compare-col--new {
+  background: var(--white);
+  border: 1px solid rgba(85, 130, 155, 0.2);
+  box-shadow: 0 8px 24px rgba(85, 130, 155, 0.08);
+}
+
+.why-us-compare-heading {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  color: var(--dark);
+}
+
+.why-us-compare-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.why-us-compare-col li {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--soft-gray);
+  padding-left: 14px;
+  position: relative;
+}
+
+.why-us-compare-col--old li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #999;
+}
+
+.why-us-compare-col--new li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #55829b;
+  font-weight: 800;
+}
+
+.why-us-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+@media (max-width: 900px) {
+  .why-us-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .why-us-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .why-us-compare {
+    grid-template-columns: 1fr;
+  }
+}
+
 .why-work-wrap {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -1045,6 +1466,14 @@ html, body {
   font-weight: 700;
   color: var(--dark);
   margin-bottom: 2px;
+}
+
+.offer-page .calc-note {
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 2px;
+  line-height: 1.35;
 }
 
 .offer-page .calc-price-tag {

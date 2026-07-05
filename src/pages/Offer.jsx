@@ -191,10 +191,150 @@ function PaidAdsMock() {
   );
 }
 
+const howItWorksSteps = [
+  {
+    step: "01",
+    icon: "📞",
+    title: "Free Strategy Call",
+    desc: "We audit your project, ideal buyer profile, and current marketing setup.",
+    points: ["30-minute discovery call", "Custom growth roadmap", "No upfront payment required"],
+  },
+  {
+    step: "02",
+    icon: "🎬",
+    title: "Content Production",
+    desc: "We create cinematic real-shoot ads and AI UGC videos built to stop the scroll.",
+    points: ["On-location property shoots", "AI UGC ad variations", "Scripts optimized for conversions"],
+    expandable: true,
+    workflow: [
+      {
+        phase: "Brief",
+        title: "Creative Brief & Strategy",
+        desc: "We lock your hook, target buyer, property angles, and whether each ad is real shoot or AI UGC.",
+        timeline: "Day 1",
+      },
+      {
+        phase: "Script",
+        title: "Scriptwriting",
+        desc: "Conversion-focused scripts with a strong opener, key benefits, objection handling, and a site-visit CTA.",
+        timeline: "Day 1–2",
+      },
+      {
+        phase: "Plan",
+        title: "Storyboard & Shot List",
+        desc: "Scene-by-scene visual plan so every frame supports the message — on camera or in AI.",
+        timeline: "Day 2–3",
+      },
+      {
+        phase: "Shoot",
+        title: "Production",
+        desc: "On-location cinematic shoot at your property, or AI UGC generation matched to your brand voice.",
+        timeline: "Day 3–5",
+      },
+      {
+        phase: "Edit",
+        title: "Editing & Post-Production",
+        desc: "Cinematic cuts, color grade, captions, sound design, and platform-safe formatting.",
+        timeline: "Day 5–7",
+      },
+      {
+        phase: "Review",
+        title: "Review & Revisions",
+        desc: "You review draft cuts. We refine hooks, pacing, and CTA until the creative is ad-ready.",
+        timeline: "Day 7–8",
+      },
+      {
+        phase: "Deliver",
+        title: "Final Video Delivery",
+        desc: "Ad-ready exports for Meta, Reels, YouTube Shorts, and WhatsApp — ready to launch campaigns.",
+        timeline: "Day 8–10",
+      },
+    ],
+  },
+  {
+    step: "03",
+    icon: "🏠",
+    title: "Funnel & Landing Page",
+    desc: "We build a high-converting funnel with a landing page that earns buyer trust.",
+    points: ["Floor plans & actual visuals", "Clear pricing & location benefits", "Site visit booking CTA"],
+  },
+  {
+    step: "04",
+    icon: "📊",
+    title: "Ads Go Live",
+    desc: "Meta and Google campaigns launch with daily optimization for maximum lead flow.",
+    points: ["Multiple content angles tested", "Lowest CPL tracking", "90-day active management"],
+  },
+  {
+    step: "05",
+    icon: "🤖",
+    title: "AI Lead Automation",
+    desc: "WhatsApp automation and AI chatbot qualify every inquiry instantly — 24/7.",
+    points: ["Budget & timeline screening", "Instant WhatsApp responses", "Hot leads flagged for sales"],
+  },
+  {
+    step: "06",
+    icon: "✅",
+    title: "Qualified Site Visits",
+    desc: "Pre-qualified buyers reach your sales team ready to book a site visit.",
+    points: ["Higher-quality inquiries", "Faster follow-up cycles", "More closings, less chasing"],
+  },
+];
+
+const whyUsReasons = [
+  {
+    icon: "🎯",
+    title: "One Integrated Growth System",
+    desc: "Creatives, landing pages, ads, and automation — all under one team. No juggling five different vendors.",
+  },
+  {
+    icon: "🏗️",
+    title: "Built for Real Estate",
+    desc: "Every script, funnel, and campaign is designed for property buyers — not generic e-commerce or D2C brands.",
+  },
+  {
+    icon: "🎬",
+    title: "Content That Converts",
+    desc: "Cinematic real-shoot ads and AI UGC videos engineered to stop the scroll and drive site visits.",
+  },
+  {
+    icon: "🏠",
+    title: "Landing Pages That Build Trust",
+    desc: "High-converting pages with floor plans, pricing, visuals, and CTAs — because your landing page makes or breaks ad spend.",
+  },
+  {
+    icon: "🤖",
+    title: "AI Lead Qualification 24/7",
+    desc: "WhatsApp automation and AI chatbots screen budget, timeline, and intent before leads reach your sales team.",
+  },
+];
+
+const whyUsStats = [
+  { value: "+340%", label: "Qualified lead growth" },
+  { value: "92%", label: "WhatsApp response rate" },
+  { value: "4x", label: "Better lead quality" },
+];
+
+const whyUsComparison = {
+  old: [
+    "5 separate vendors to manage",
+    "Generic ads that look like everyone else",
+    "Slow manual follow-up on inquiries",
+    "No funnel or landing page strategy",
+  ],
+  us: [
+    "One team handles everything end-to-end",
+    "Real estate-specific creatives & angles",
+    "Instant AI qualification around the clock",
+    "Full funnel from ad click to site visit",
+  ],
+};
+
 const calcServices = [
-  { id: "shoot", label: "Cinematic Real Estate Ad Shoot", unitPrice: 5000, unit: "shoot", hasQty: true, max: 20, min: 3, defaultQty: 3 },
+  { id: "shoot", label: "Cinematic Real Estate Ad Shoot", unitPrice: 4000, unit: "shoot", hasQty: true, max: 20, min: 3, defaultQty: 3 },
   { id: "ugc", label: "AI UGC Ad Videos", unitPrice: 4000, unit: "video", hasQty: true, max: 20, min: 3, defaultQty: 3 },
   { id: "funnel", label: "High-Converting Funnel", unitPrice: 5000, unit: null, hasQty: false },
+  { id: "landing", label: "Landing Page", unitPrice: 25000, unit: null, hasQty: false, note: "Landing pages matter a lot — they make or break your ad spend." },
   { id: "chatbot", label: "AI Real Estate Chatbot", unitPrice: 6000, unit: null, hasQty: false },
   { id: "wa", label: "WhatsApp Automation", unitPrice: 10000, unit: null, hasQty: false },
   { id: "meta", label: "Meta Ads Management", unitPrice: 15000, unit: "/mo", hasQty: false },
@@ -289,6 +429,7 @@ function PricingCalculator() {
                   </div>
                   <div className="calc-info">
                     <div className="calc-label">{svc.label}</div>
+                    {svc.note && <div className="calc-note">{svc.note}</div>}
                     <div className="calc-price-tag">
                       {fmt(svc.unitPrice)}{svc.unit ? ` / ${svc.unit}` : ""}
                     </div>
@@ -401,22 +542,13 @@ const shortFormVideos = [
   { type: "ugc", tag: "AI UGC", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=0404_itrkrs" }
 ];
 
-const testimonials = [
-  { name: "Amit", role: "Real Estate Broker", text: "wstatemedia changed the way we shoot property videos. The cinematic style generated high quality inquiries instantly.", initial: "A" },
-  { name: "Neha", role: "Marketing Lead", text: "The AI UGC ads generated leads at half our typical cost. The response from local buyers has been phenomenal.", initial: "N" },
-  { name: "Aman", role: "Developer", text: "Our sales team actually enjoys calling these leads. They are pre-qualified and ready to schedule site visits.", initial: "A" },
-  { name: "Pooja", role: "Developer", text: "The WhatsApp automation resolves leads instantly, keeping buyers engaged while they are hot.", initial: "P" },
-  { name: "Vivek", role: "Luxury Property Consultant", text: "We scaled our ad spend by 4x and kept CPL low. The ROI on our campaigns has been outstanding.", initial: "V" },
-  { name: "Harsh", role: "Builder", text: "Highly recommended if you want results, not excuses. Their integrated acquisition system works day and night.", initial: "H" }
-];
-
 export default function OfferPage() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [showVideo, setShowVideo] = useState(false);
   const [modalVideoUrl, setModalVideoUrl] = useState("");
-  const [country, setCountry] = useState('India');
   const [creativeFilter, setCreativeFilter] = useState("all");
   const [playingIndex, setPlayingIndex] = useState(null);
+  const [expandedHowStep, setExpandedHowStep] = useState(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -480,7 +612,8 @@ export default function OfferPage() {
   const getThumbnail = (url) => {
     const match = url.match(/public_id=([^&]+)/);
     if (match && match[1]) {
-      return `https://res.cloudinary.com/dobulag2p/image/upload/${match[1]}.jpg`;
+      const id = decodeURIComponent(match[1]);
+      return `https://res.cloudinary.com/dobulag2p/video/upload/so_0,w_400,h_711,c_fill/${id}.jpg`;
     }
     return "https://res.cloudinary.com/dobulag2p/image/upload/v1778540902/__I_know_Your_Problem_202605120355_srntis.jpg";
   };
@@ -522,8 +655,7 @@ export default function OfferPage() {
           <ul className="navbar-links">
             <li><a href="#how-it-works" className="navbar-link">HOW IT WORKS</a></li>
             <li><a href="#short-form" className="navbar-link">STYLES</a></li>
-            <li><a href="#why-us" className="navbar-link">WHY US</a></li>
-            <li><a href="#stories" className="navbar-link">STORIES</a></li>
+            <li><a href="#why-work" className="navbar-link">WHY US</a></li>
           </ul>
           <a href="#cta" className="navbar-btn">BOOK CALL →</a>
         </div>
@@ -534,8 +666,7 @@ export default function OfferPage() {
         <div className="container">
           <div className="hero-label">AI REAL ESTATE GROWTH SYSTEM</div>
           <h1>
-            Generate Qualified Property Buyers
-            <br />
+            Generate Qualified Property Buyers{" "}
             <span className="brand-highlight">Using AI-Powered Funnels</span>
           </h1>
           <p className="subheadline">
@@ -570,50 +701,75 @@ export default function OfferPage() {
         <div className="container">
           <div className="section-title">
             <h2>HOW IT <span className="text-highlight">WORKS</span></h2>
-            <p>Your journey starts with content, and ends with conversions.</p>
+            <p>From strategy call to qualified site visits — here is exactly how we build your acquisition system.</p>
           </div>
-          <div className="how-it-works-grid">
-            <div className="how-left-col">
-              <div className="how-card">
-                <div className="how-card-header">
-                  <div className="how-icon-box">📱</div>
-                  <h3>15 SECOND FLEX AD SHOOTS</h3>
+          <div className="how-steps-grid">
+            {howItWorksSteps.map((item) => {
+              const isExpanded = expandedHowStep === item.step;
+              return (
+                <div
+                  className={`how-step-card${item.expandable ? " how-step-card--expandable" : ""}${isExpanded ? " how-step-card--expanded" : ""}`}
+                  key={item.step}
+                  onClick={item.expandable ? () => setExpandedHowStep(isExpanded ? null : item.step) : undefined}
+                  role={item.expandable ? "button" : undefined}
+                  tabIndex={item.expandable ? 0 : undefined}
+                  onKeyDown={item.expandable ? (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setExpandedHowStep(isExpanded ? null : item.step);
+                    }
+                  } : undefined}
+                >
+                  <div className="how-step-top">
+                    <span className="how-step-num">Step {item.step}</span>
+                    <div className="how-icon-box">{item.icon}</div>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p className="how-step-desc">{item.desc}</p>
+                  <ul className="how-step-points">
+                    {item.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  {item.expandable && (
+                    <button
+                      type="button"
+                      className="how-step-toggle"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpandedHowStep(isExpanded ? null : item.step);
+                      }}
+                    >
+                      {isExpanded ? "Hide production pipeline −" : "See script → delivery pipeline +"}
+                    </button>
+                  )}
+                  {item.workflow && isExpanded && (
+                    <div className="how-step-workflow" onClick={(e) => e.stopPropagation()}>
+                      <div className="how-workflow-title">Script to Video Delivery</div>
+                      {item.workflow.map((stage, idx) => (
+                        <div className="how-workflow-item" key={stage.phase}>
+                          <div className="how-workflow-line">
+                            <div className="how-workflow-dot">{idx + 1}</div>
+                            {idx < item.workflow.length - 1 && <div className="how-workflow-connector" />}
+                          </div>
+                          <div className="how-workflow-content">
+                            <div className="how-workflow-meta">
+                              <span className="how-workflow-phase">{stage.phase}</span>
+                              <span className="how-workflow-time">{stage.timeline}</span>
+                            </div>
+                            <div className="how-workflow-name">{stage.title}</div>
+                            <p className="how-workflow-desc">{stage.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                <p>Premium cinematic property videos designed to stop scrolling instantly.</p>
-              </div>
-              <div className="how-card card-blue">
-                <div className="how-card-header">
-                  <div className="how-icon-box">📊</div>
-                  <h3>90 DAYS META/GOOGLE ADS</h3>
-                </div>
-                <p>Active management & daily optimization for maximum lead flow.</p>
-              </div>
-            </div>
-            <div className="how-card card-dark">
-              <div className="how-card-header">
-                <div className="how-icon-box">✂️</div>
-                <h3>TURN CLIPS INTO CONTENT THAT CONVERTS</h3>
-              </div>
-              <p>The secret weapon for real estate builders and brokers looking to build authority, scale their reach, and dominate their local market with automated high-converting video funnels.</p>
-              <div className="sound-timeline-mock">
-                <div className="timeline-header">
-                  <div className="timeline-dot" style={{ background: '#ff5f56' }} />
-                  <div className="timeline-dot" style={{ background: '#ffbd2e' }} />
-                  <div className="timeline-dot" style={{ background: '#27c93f' }} />
-                </div>
-                <div className="timeline-wave">
-                  <div className="wave-bar" style={{ height: '30%' }} />
-                  <div className="wave-bar" style={{ height: '50%' }} />
-                  <div className="wave-bar active" style={{ height: '80%' }} />
-                  <div className="wave-bar active" style={{ height: '60%' }} />
-                  <div className="wave-bar active" style={{ height: '90%' }} />
-                  <div className="wave-bar active" style={{ height: '40%' }} />
-                  <div className="wave-bar" style={{ height: '70%' }} />
-                  <div className="wave-bar" style={{ height: '30%' }} />
-                  <div className="wave-bar" style={{ height: '50%' }} />
-                </div>
-              </div>
-            </div>
+              );
+            })}
+          </div>
+          <div className="how-steps-cta">
+            <a href="#cta" className="btn-primary">BOOK YOUR FREE STRATEGY CALL</a>
           </div>
         </div>
       </section>
@@ -665,314 +821,60 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* LONG FORM STYLES */}
-      <section id="long-form" style={{ background: '#eae5dc', borderTop: 'none', borderBottom: 'none' }}>
-        <div className="container">
-          <div className="section-title">
-            <h2>LONG FORM <span className="text-highlight">STYLES</span></h2>
-            <p>Extended cinematic property films that capture attention.</p>
-          </div>
-          <div className="long-form-grid">
-            <div className="widescreen-card" onClick={() => openVideoInModal("https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=7_lpgoxu")} />
-            <div className="widescreen-card" onClick={() => openVideoInModal("https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=8_l0wsbr")} />
-            <div className="widescreen-card" onClick={() => openVideoInModal("https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=prakhar_properties_1778384102_3893172810243885227_73535257018_zi9osj")} />
-            <div className="widescreen-card" onClick={() => openVideoInModal("https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=prakhar_properties_1778305436_3892698647800481401_73535257018_ybkmvq")} />
-          </div>
-        </div>
-      </section>
-
       {/* WHY WORK WITH US */}
-      <section id="why-us" style={{ background: '#eae5dc', borderTop: 'none', borderBottom: 'none' }}>
-        <div className="container">
-          <div className="why-work-wrap">
-            <div className="why-left-content">
-              <div className="section-title" style={{ textAlign: 'left', marginBottom: '24px' }}>
-                <h2>WHY WORK WITH <span className="text-highlight">US?</span></h2>
-                <p>Our creative agency focuses on what matters: conversions.</p>
-              </div>
-              <div className="why-features">
-                <div className="why-feature-item">
-                  <div className="why-feature-dot">✓</div>
-                  <div className="why-feature-text">
-                    <h4>CREATIVE FOCUS</h4>
-                    <p>High quality property films that capture attention.</p>
-                  </div>
-                </div>
-                <div className="why-feature-item">
-                  <div className="why-feature-dot">✓</div>
-                  <div className="why-feature-text">
-                    <h4>SYSTEMS FOCUS</h4>
-                    <p>Custom building landing pages, WhatsApp automation, and ads.</p>
-                  </div>
-                </div>
-                <div className="why-feature-item">
-                  <div className="why-feature-dot">✓</div>
-                  <div className="why-feature-text">
-                    <h4>RESULTS FOCUS</h4>
-                    <p>We manage campaigns to optimize for maximum return.</p>
-                  </div>
-                </div>
-              </div>
-              <a href="#build-package" className="btn-primary" style={{ alignSelf: 'flex-start' }}>CLAIM YOUR FREE STRATEGY AUDIT</a>
-            </div>
-            
-            <div className="stats-card">
-              <div className="stats-header">
-                <div className="stats-big-number">+340%</div>
-                <div className="stats-card-icon">📈</div>
-              </div>
-              <div className="stats-label">Average increase in qualified lead flow.</div>
-              <div className="bar-chart-container">
-                <div className="chart-bar-wrap">
-                  <div className="chart-bar" style={{ height: '20%' }} />
-                  <div className="chart-label">M1</div>
-                </div>
-                <div className="chart-bar-wrap">
-                  <div className="chart-bar" style={{ height: '35%' }} />
-                  <div className="chart-label">M2</div>
-                </div>
-                <div className="chart-bar-wrap">
-                  <div className="chart-bar" style={{ height: '50%' }} />
-                  <div className="chart-label">M3</div>
-                </div>
-                <div className="chart-bar-wrap">
-                  <div className="chart-bar" style={{ height: '65%' }} />
-                  <div className="chart-label">M4</div>
-                </div>
-                <div className="chart-bar-wrap">
-                  <div className="chart-bar" style={{ height: '80%' }} />
-                  <div className="chart-label">M5</div>
-                </div>
-                <div className="chart-bar-wrap">
-                  <div className="chart-bar" style={{ height: '100%' }} />
-                  <div className="chart-label">M6</div>
-                </div>
-              </div>
-              <div className="stats-footer">
-                <span>Before: 12 leads/mo</span>
-                <span>After: 53 leads/mo</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CUSTOMER STORIES */}
-      <section className="customer-stories-section" id="stories">
+      <section id="why-work" style={{ background: '#eae5dc', borderTop: 'none', borderBottom: 'none' }}>
         <div className="container">
           <div className="section-title">
-            <h2>CUSTOMER STORIES</h2>
-            <p>What our clients say about working with us.</p>
+            <h2>WHY WORK WITH <span className="text-highlight">US?</span></h2>
+            <p>Most developers hire separate agencies for videos, ads, funnels, and automation. We built one system that does it all — and actually converts.</p>
           </div>
-          <div className="testimonials-grid">
-            {testimonials.map((t, i) => (
-              <div className="testimonial-card" key={i}>
-                <div className="testimonial-header">
-                  <div className="testimonial-avatar">{t.initial}</div>
+
+          <div className="why-us-grid">
+            <div className="why-us-reasons">
+              {whyUsReasons.map((item) => (
+                <div className="why-us-reason" key={item.title}>
+                  <div className="why-us-reason-icon">{item.icon}</div>
                   <div>
-                    <div className="testimonial-author-name">{t.name}</div>
-                    <div className="testimonial-author-role">{t.role}</div>
+                    <h4>{item.title}</h4>
+                    <p>{item.desc}</p>
                   </div>
                 </div>
-                <p className="testimonial-body">"{t.text}"</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4-STEP PREMIUM SYSTEM */}
-      <section className="premium-system-section" id="why-us" style={{ background: '#eae5dc', borderTop: 'none', borderBottom: 'none' }}>
-        <div className="container">
-          <div className="section-title">
-            <span className="premium-tag">PREMIUM PROPERTY SALES SYSTEM</span>
-            <h2>Ye toh hum nahi bata sakte!</h2>
-            <p className="premium-subtitle">
-              Lekin hum ye zaroor bata sakte hain ki <strong>₹3Cr+ projects</strong> ke liye qualified site visits kaise generate ki jaati hain.
-              <br />
-              <span>Kyuki premium properties ads se nahi, <strong>Ye 4 Systems</strong> se bikti hain:</span>
-            </p>
-          </div>
-
-          <div className="system-grid">
-            {/* STEP 1 */}
-            <div className="system-card">
-              <div className="card-step-num">Step #1</div>
-              <h3>5 Content Angles Test Karo</h3>
-              <p className="card-desc">Most developers run only 1 angle. Winning projects test 5–10 angles to find what generates the lowest CPL and highest site visits.</p>
-              <div className="card-content-angles">
-                <div className="angle-item"><span>1</span> Location Story</div>
-                <div className="angle-item"><span>2</span> ROI Story</div>
-                <div className="angle-item"><span>3</span> Infrastructure Story</div>
-                <div className="angle-item"><span>4</span> Lifestyle Story</div>
-                <div className="angle-item"><span>5</span> Scarcity Story</div>
-              </div>
-              <ul className="card-checklist">
-                <li>✓ Test which ad has the lowest CPL</li>
-                <li>✓ Track which ad drives the most site visits</li>
-              </ul>
+              ))}
             </div>
 
-            {/* STEP 2 */}
-            <div className="system-card">
-              <div className="card-step-num">Step #2</div>
-              <h3>Landing Page Ad Se Zyada Important Hai</h3>
-              <p className="card-desc">Developers spend ₹5L on ads but build landing pages in 15 minutes. A ₹3Cr buyer needs deep trust. Your landing page must include:</p>
-              <div className="landing-page-requirements">
-                <div className="req-item">🖼️ Actual Visuals</div>
-                <div className="req-item">📐 Floor Plans</div>
-                <div className="req-item">💰 Clear Pricing</div>
-                <div className="req-item">📍 Location Advantages</div>
-                <div className="req-item">⏳ Possession Timeline</div>
-                <div className="req-item">🎯 Site Visit CTA</div>
+            <div className="why-us-proof">
+              <div className="why-us-stats">
+                {whyUsStats.map((stat) => (
+                  <div className="why-us-stat" key={stat.label}>
+                    <div className="why-us-stat-value">{stat.value}</div>
+                    <div className="why-us-stat-label">{stat.label}</div>
+                  </div>
+                ))}
               </div>
-              <p className="card-note">Agar landing page trust build nahi kar raha, toh aapka Ad budget waste ho raha hai.</p>
-            </div>
 
-            {/* STEP 3 */}
-            <div className="system-card">
-              <div className="card-step-num">Step #3</div>
-              <h3>Google Pe Ye Keywords Zaroor Chalao</h3>
-              <p className="card-desc">High-intent buyers are actively searching. Capture them by running targeted search campaigns on these keywords:</p>
-              <div className="keywords-box">
-                <ul>
-                  <li><strong>Area + Property Type</strong> <br /><span>e.g. "Whitefield Investment Property"</span></li>
-                  <li><strong>Builder Name + Reviews</strong> <br /><span>e.g. "Prestige Whitefield Reviews"</span></li>
-                  <li><strong>Area + Investment</strong> <br /><span>e.g. "Luxury Apartments Whitefield"</span></li>
-                  <li><strong>Competitor Project Names</strong></li>
-                </ul>
-              </div>
-              <div className="card-badge-note">High-intent buyers yahin milte hain.</div>
-            </div>
-
-            {/* STEP 4 */}
-            <div className="system-card">
-              <div className="card-step-num">Step #4</div>
-              <h3>"Luxury Project" Bolna Band Karo</h3>
-              <p className="card-desc">If your ads say what 100 other projects say, you're wasting budget. Skip generic ads and test investor-backed angles:</p>
-              
-              <div className="ads-comparison">
-                <div className="comp-wrong">
-                  <h4>❌ Generic Ads (Wasted Budget)</h4>
+              <div className="why-us-compare">
+                <div className="why-us-compare-col why-us-compare-col--old">
+                  <div className="why-us-compare-heading">❌ The Old Way</div>
                   <ul>
-                    <li>Luxury Apartments Starting ₹3Cr</li>
-                    <li>Book Your Site Visit Today</li>
-                    <li>40+ Premium Amenities</li>
+                    {whyUsComparison.old.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
                   </ul>
                 </div>
-                <div className="comp-right">
-                  <h4>✓ Smart Angles (High Conversions)</h4>
+                <div className="why-us-compare-col why-us-compare-col--new">
+                  <div className="why-us-compare-heading">✓ With wstatemedia</div>
                   <ul>
-                    <li>Is micro-market mein CXOs itna paisa kyu laga rahe hain?</li>
-                    <li>Is area mein pichhle 5 saal mein property prices kitni badhi?</li>
-                    <li>Metro aane ke baad is location ka future kya hai?</li>
-                    <li>Is location ko investors quietly accumulate kyu kar rahe hain?</li>
+                    {whyUsComparison.us.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* SYSTEM */}
-      <section style={{ background: '#eae5dc', borderTop: 'none', borderBottom: 'none' }}>
-        <div className="container">
-          <div className="section-title">
-            <h2>The AI Real Estate Acquisition Machine</h2>
-            <p>
-              We combine real shoot ads, AI UGC videos, funnels, WhatsApp automation,
-              AI chatbots, and paid ads into one integrated growth system.
-            </p>
-          </div>
-          <div className="stack">
-            {stack.map((item, i) => (
-              <div className="stack-box" key={i}>
-                {item.reverse ? (
-                  <>
-                    {item.videos ? (
-                      <div className="stack-videos">
-                        {item.videos.slice(0, 2).map((src, vi) => (
-                          <div className="stack-video-wrap" key={vi}>
-                            <iframe src={src} width="100%" height="100%" frameBorder="0"
-                              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                              allowFullScreen style={{ display: "block", border: 0 }} />
-                          </div>
-                        ))}
-                      </div>
-                    ) : item.type === "funnel" ? (
-                      <FunnelDiagram />
-                    ) : item.type === "whatsapp" ? (
-                      <WhatsAppMock />
-                    ) : item.type === "chatbot" ? (
-                      <AIChatbotMock />
-                    ) : item.type === "ads" ? (
-                      <PaidAdsMock />
-                    ) : (
-                      <div className="stack-image">{item.image}</div>
-                    )}
-                    <div className="stack-content">
-                      <h3>{item.title}</h3>
-                      <p>{item.desc}</p>
-                      <a href="#build-package" className="small-btn">{item.cta}</a>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="stack-content">
-                      <h3>{item.title}</h3>
-                      <p>{item.desc}</p>
-                      <a href="#build-package" className="small-btn">{item.cta}</a>
-                    </div>
-                    {item.videos ? (
-                      <div className="stack-videos">
-                        {item.videos.slice(0, 2).map((src, vi) => (
-                          <div className="stack-video-wrap" key={vi}>
-                            <iframe src={src} width="100%" height="100%" frameBorder="0"
-                              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                              allowFullScreen style={{ display: "block", border: 0 }} />
-                          </div>
-                        ))}
-                      </div>
-                    ) : item.type === "funnel" ? (
-                      <FunnelDiagram />
-                    ) : item.type === "whatsapp" ? (
-                      <WhatsAppMock />
-                    ) : item.type === "chatbot" ? (
-                      <AIChatbotMock />
-                    ) : item.type === "ads" ? (
-                      <PaidAdsMock />
-                    ) : (
-                      <div className="stack-image">{item.image}</div>
-                    )}
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* RESULTS */}
-      <section className="section" style={{ background: '#eae5dc', borderTop: 'none', borderBottom: 'none' }}>
-        <div className="container">
-          <div className="section-title">
-            <h2>Real Results</h2>
-            <p>Designed to generate more inquiries, faster follow-up, and better buyer quality.</p>
-          </div>
-          <div className="results">
-            <div className="result">
-              <h3>312%</h3>
-              <p>Increase in qualified lead flow.</p>
-            </div>
-            <div className="result">
-              <h3>92%</h3>
-              <p>WhatsApp response rate using automation.</p>
-            </div>
-            <div className="result">
-              <h3>4X</h3>
-              <p>Better lead quality than traditional campaigns.</p>
-            </div>
+          <div className="why-us-cta">
+            <a href="#cta" className="btn-primary">BOOK YOUR FREE STRATEGY CALL</a>
           </div>
         </div>
       </section>
@@ -999,75 +901,6 @@ export default function OfferPage() {
               ].map((item, i) => (
                 <div className="offer-item" key={i}>{item}</div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FIXED PRICING PACKAGES */}
-      <section className="section" id="pricing" style={{ background: '#eae5dc', borderTop: 'none', borderBottom: 'none' }}>
-        <div className="container">
-          <div className="section-title" style={{ marginBottom: '40px' }}>
-            <h2>Transparent Pricing</h2>
-          </div>
-          <div className="region-toggle-wrap">
-            <span className="region-toggle-label">Select Region:</span>
-            <select 
-              value={country} 
-              onChange={(e) => setCountry(e.target.value)}
-              className="region-toggle-select"
-            >
-              <option value="India">India</option>
-              <option value="Global">Global (USA/UK)</option>
-            </select>
-          </div>
-
-          <div className="mini-pricing-wrap">
-            <div className="mini-pricing-card" style={country === 'Global' ? { opacity: 0.5, pointerEvents: 'none' } : {}}>
-              <div className="mini-pricing-title">Real Shoot</div>
-              <div className="mini-pricing-sub">Premium on-location videography</div>
-              <div className="mini-pricing-price">{country === 'India' ? "₹15,000" : "-"}</div>
-              <div className="mini-pricing-vol">3 videos minimum</div>
-              {country === 'Global' ? (
-                <div className="mini-pricing-btn" style={{ background: '#ccc', color: '#666', borderColor: '#ccc' }}>NOT AVAILABLE</div>
-              ) : (
-                <a href="#build-package" className="mini-pricing-btn">GET STARTED</a>
-              )}
-              <ul className="mini-pricing-features">
-                <li><span className="mini-pricing-check">✓</span> Strategy &amp; Planning</li>
-                <li><span className="mini-pricing-check">✓</span> Scriptwriting</li>
-                <li><span className="mini-pricing-check">✓</span> On-Location Shoot</li>
-                <li><span className="mini-pricing-check">✓</span> Cinematic Editing</li>
-              </ul>
-            </div>
-
-            <div className="mini-pricing-card special">
-              <div className="mini-pricing-popular">MOST POPULAR</div>
-              <div className="mini-pricing-title">Real Estate UGC</div>
-              <div className="mini-pricing-sub">High-conversion AI/UGC content</div>
-              <div className="mini-pricing-price">{country === 'India' ? "₹12,000" : "$150"}</div>
-              <div className="mini-pricing-vol">3 videos minimum</div>
-              <a href="#build-package" className="mini-pricing-btn">GET STARTED</a>
-              <ul className="mini-pricing-features">
-                <li><span className="mini-pricing-check">✓</span> Strategy &amp; Planning</li>
-                <li><span className="mini-pricing-check">✓</span> Scriptwriting</li>
-                <li><span className="mini-pricing-check">✓</span> UGC / AI Generation</li>
-                <li><span className="mini-pricing-check">✓</span> Dynamic Editing</li>
-              </ul>
-            </div>
-
-            <div className="mini-pricing-card">
-              <div className="mini-pricing-title">3 Minute Package</div>
-              <div className="mini-pricing-sub">Extended cinematic narrative</div>
-              <div className="mini-pricing-price">{country === 'India' ? "₹18,000" : "$220"}</div>
-              <div className="mini-pricing-vol">1 video (3 min)</div>
-              <a href="#build-package" className="mini-pricing-btn">GET STARTED</a>
-              <ul className="mini-pricing-features">
-                <li><span className="mini-pricing-check">✓</span> Advanced Storyboarding</li>
-                <li><span className="mini-pricing-check">✓</span> Extended Shoot Time</li>
-                <li><span className="mini-pricing-check">✓</span> Premium Editing &amp; Grade</li>
-                <li><span className="mini-pricing-check">✓</span> Full Narrative Arc</li>
-              </ul>
             </div>
           </div>
         </div>
