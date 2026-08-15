@@ -20,119 +20,139 @@ const faqs = [
   },
 ];
 
-const howItWorksSteps = [
-  {
-    step: "01",
-    title: "Free strategy call",
-    desc: "We audit your current ads, offer, and funnel to find exactly where leads are leaking.",
-  },
-  {
-    step: "02",
-    title: "Creative blueprint",
-    desc: "We map the hooks, angles, and offers proven to work in your specific real estate market.",
-  },
-  {
-    step: "03",
-    title: "AI-powered production",
-    desc: "We produce 10–20 ad variations in days — reviewed and approved by a human strategist.",
-  },
-  {
-    step: "04",
-    title: "Launch, test, scale",
-    desc: "We track performance weekly and ship new variants before your winners go stale.",
-  },
-];
-
-const whyUsReasons = [
-  {
-    title: "One Integrated Growth System",
-    desc: "Creatives, landing pages, ads, and automation — all under one team. No juggling five different vendors.",
-  },
-  {
-    title: "Built for Real Estate",
-    desc: "Every script, funnel, and campaign is designed for property buyers — not generic e-commerce or D2C brands.",
-  },
-  {
-    title: "Content That Converts",
-    desc: "Cinematic real-shoot ads and AI UGC videos engineered to stop the scroll and drive site visits.",
-  },
-  {
-    title: "Landing Pages That Build Trust",
-    desc: "High-converting pages with floor plans, pricing, visuals, and CTAs — because your landing page makes or breaks ad spend.",
-  },
-  {
-    title: "AI Lead Qualification 24/7",
-    desc: "SMS automation and AI chatbots screen budget, timeline, and intent before leads reach your sales team.",
-  },
-];
-
 const calcServices = [
-  { id: "shoot", label: "Cinematic Real Estate Video Production", unitPrice: 250, unit: "video", hasQty: true, max: 20, min: 3, defaultQty: 3 },
-  { id: "ugc", label: "AI UGC Ad Videos", unitPrice: 150, unit: "video", hasQty: true, max: 20, min: 3, defaultQty: 3 },
-  { id: "funnel", label: "High-Converting Acquisition Funnel", unitPrice: 450, unit: null, hasQty: false },
-  { id: "landing", label: "High-Converting Custom Landing Page", unitPrice: 650, unit: null, hasQty: false, note: "Landing pages make or break ad spend — engineered for high-intent buyers." },
-  { id: "chatbot", label: "AI Real Estate Buyer Chatbot", unitPrice: 350, unit: null, hasQty: false },
-  { id: "wa", label: "SMS & CRM AI Lead Automation", unitPrice: 400, unit: null, hasQty: false },
-  { id: "meta", label: "Meta & Google Ads Management", unitPrice: 850, unit: "/mo", hasQty: false },
+  {
+    id: "ai_calling",
+    label: "AI Calling System Setup & Agent Creation",
+    unitPrice: 10000,
+    unit: null,
+    hasQty: false,
+    note: "Setup + Agent creation (₹10,000). Usage billed separately @ ₹7 / min."
+  },
+  {
+    id: "ai_videos",
+    label: "AI Real Estate Videos",
+    unitPrice: 2500,
+    unit: "video",
+    hasQty: true,
+    min: 4,
+    max: 20,
+    defaultQty: 4,
+    note: "Creative concept, AI visuals, voiceover/presenter, 9:16 format & captions."
+  },
+  {
+    id: "ugc_videos",
+    label: "Human UGC Real Estate Videos",
+    unitPrice: 3000,
+    unit: "video",
+    hasQty: true,
+    min: 2,
+    max: 20,
+    defaultQty: 2,
+    note: "Real UGC creator, on-ground shoot, editing, 9:16 format (min order: 2)."
+  },
+  {
+    id: "website",
+    label: "Real Estate Website Setup",
+    unitPrice: 25000,
+    unit: null,
+    hasQty: false,
+    note: "Includes 3-Yr Hosting + 1-Yr Email, Property Listing System & Site Visit Flow."
+  },
+  {
+    id: "landing",
+    label: "Standalone Project Landing Page",
+    unitPrice: 10000,
+    unit: "page",
+    hasQty: true,
+    min: 1,
+    max: 10,
+    defaultQty: 1,
+    note: "High-converting standalone project page with gallery, floor plans & brochure download."
+  },
+  {
+    id: "whatsapp",
+    label: "WhatsApp Automation Setup",
+    unitPrice: 10000,
+    unit: null,
+    hasQty: false,
+    note: "Instant welcome reply, requirement collection, qualification & site visit routing."
+  },
+  {
+    id: "ai_ads",
+    label: "AI Ad Creative (3 Meta Videos)",
+    unitPrice: 7000,
+    unit: null,
+    hasQty: false,
+    note: "Ad strategy, scroll-stopping hooks, AI visuals & voiceover (3 videos)."
+  },
+  {
+    id: "ugc_ads",
+    label: "Human UGC Ads (2 Meta Videos)",
+    unitPrice: 6000,
+    unit: null,
+    hasQty: false,
+    note: "Human UGC creator presentation shoot & ad editing (min 2 videos)."
+  }
 ];
 
 const fixedPlans = [
   {
-    name: "Starter",
-    desc: "For real estate agents & small teams testing AI creative for the first time.",
-    price: "$1,500",
-    period: "/mo",
-    billed: "Billed monthly • no long-term contract",
+    name: "Starter Package",
+    desc: "For individual realtors & small agencies getting started with AI lead generation.",
+    price: "₹35,000",
+    period: "one-time",
+    billed: "Includes Website, 4 AI Videos & WhatsApp Setup",
     popular: false,
-    btnText: "Start With Starter",
+    btnText: "Choose Starter",
     features: [
-      "6 ad variations / month",
-      "1 platform (Meta or Google)",
-      "Bi-weekly strategy check-in",
-      "Performance dashboard",
-      "5-business-day turnaround",
-    ],
+      "Real Estate Website (3-yr hosting)",
+      "4 AI Real Estate Reels / Shorts",
+      "WhatsApp Lead Automation Setup",
+      "AI Calling System Integration",
+      "Lead Management & Admin Panel"
+    ]
   },
   {
-    name: "Growth",
-    desc: "For real estate businesses ready to scale ad spend on proven creative.",
-    price: "$3,200",
-    period: "/mo",
-    billed: "Billed monthly • no long-term contract",
+    name: "Growth Acquisition Package",
+    desc: "Complete digital & AI acquisition system built to scale lead generation.",
+    price: "₹65,000",
+    period: "one-time",
+    billed: "Best value • Full connected lead pipeline",
     popular: true,
     btnText: "Book Strategy Call",
     features: [
-      "15 ad variations / month",
-      "Multi-platform (Meta, Google, YouTube)",
-      "Weekly optimization calls",
-      "Dedicated performance strategist",
-      "48-hour turnaround",
-      "Structured A/B testing roadmap",
-    ],
+      "Advanced Real Estate Portal & Custom Filters",
+      "8 AI Real Estate Videos + 2 Human UGC Videos",
+      "AI Calling System Setup + Agent Creation",
+      "WhatsApp Nurturing & Site Visit Automation",
+      "3 AI Meta/Google Ad Creatives",
+      "Dedicated Onboarding & Strategy"
+    ]
   },
   {
-    name: "Enterprise / Custom",
-    desc: "For developers & enterprise real estate teams scaling creative output across multiple properties.",
+    name: "Enterprise Developer Suite",
+    desc: "For property builders & large developers scaling multiple project launches.",
     price: "Custom",
     period: "",
-    billed: "Pricing based on property volume",
+    billed: "Tailored scope for multi-project launches",
     popular: false,
     btnText: "Talk to Sales",
     features: [
-      "Unlimited project volume",
-      "Custom performance reporting",
-      "Priority production queue",
-      "Dedicated account team",
-      "Workflow & CRM integrations",
-    ],
-  },
+      "Multiple Standalone Project Landing Pages",
+      "12+ AI Videos & Human UGC Video Series",
+      "Custom AI Knowledge Base & CRM Integration",
+      "Multi-Agent WhatsApp & AI Calling Infrastructure",
+      "Priority Production Queue & Retainer Support"
+    ]
+  }
 ];
 
 const CALC_SHEET_URL = "https://script.google.com/macros/s/AKfycbxABRNpYSU6BJHLRJY1vE0ohMlCGNLjq6OuyECJEEZplZ4KfGebKe54_Ljrg-kJZRZy2w/exec";
 
 function PricingCalculator() {
   const [selected, setSelected] = useState({});
-  const [qty, setQty] = useState({ shoot: 3, ugc: 3 });
+  const [qty, setQty] = useState({ ai_videos: 4, ugc_videos: 2, landing: 1 });
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -164,7 +184,7 @@ function PricingCalculator() {
   const discounted = Math.round(total * (1 - discount));
   const saved = total - discounted;
 
-  const fmt = (n) => "$" + n.toLocaleString("en-US");
+  const fmt = (n) => "₹" + n.toLocaleString("en-IN");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -312,17 +332,313 @@ function PricingCalculator() {
   );
 }
 
+const proposalData = {
+  brand: {
+    name: "Wstatemedia",
+    website: "wstatemedia.site",
+    date: "August 2026"
+  },
+  overview: {
+    heading: "Overview",
+    text: "This proposal outlines a complete suite of digital and AI-powered services built specifically for real estate businesses — builders, developers, agencies and independent realtors. Each service below is modular: pick a single service to start, or combine them into a connected system where your website, AI calling, WhatsApp automation and video content all feed a single lead pipeline."
+  },
+  pricingSummary: {
+    heading: "Pricing Summary",
+    columns: ["Service", "Setup / One-Time", "Monthly / Usage"],
+    rows: [
+      ["AI Calling System", "₹10,000 (setup + agent creation)", "₹7 / minute (usage)"],
+      ["AI Real Estate Videos", "From ₹2,500 / video", "—"],
+      ["Human UGC Videos", "From ₹3,000 / video (min. 2)", "—"],
+      ["Real Estate Website", "₹25,000 – ₹40,000 (by complexity)", "Incl. 3-yr hosting + 1-yr email"],
+      ["WhatsApp Automation", "₹10,000 – ₹25,000", "₹3,000 – ₹10,000 + API charges"],
+      ["AI Ads (Creative)", "₹7,000 / 3 videos (min. 3)", "—"],
+      ["Human UGC Ads", "From ₹3,000 / video (min. 2)", "—"]
+    ],
+    note: "Detailed scope for each service follows below."
+  },
+  services: [
+    {
+      number: 1,
+      id: "ai-calling",
+      title: "1. AI Calling System",
+      pricing: [
+        { label: "Setup + Agent Creation:", value: "₹10,000 (one-time)" },
+        { label: "Usage:", value: "₹7 / minute" }
+      ],
+      sections: [
+        {
+          heading: "What's Included",
+          features: [
+            "AI inbound & outbound calling, with instant lead calling on enquiry",
+            "Lead qualification — budget, location, and BHK / requirement collection",
+            "Property information sharing and FAQ handling",
+            "Lead verification and follow-up calls",
+            "Appointment & site visit booking, confirmation, and rescheduling",
+            "Call reminders, call summaries, and lead status updates",
+            "Human handoff for hot leads",
+            "CRM integration, call recording/transcription (where supported)",
+            "Business-specific AI knowledge base, trained on your properties"
+          ]
+        }
+      ]
+    },
+    {
+      number: 2,
+      id: "ai-videos-ugc",
+      title: "2. AI Real Estate Videos & Human UGC Videos",
+      sections: [
+        {
+          heading: "AI Real Estate Videos",
+          pricing: [{ label: "Price:", value: "₹2,500 / video" }],
+          packages: {
+            columns: ["Package", "Videos", "Price"],
+            rows: [
+              ["Starter", "4 Videos", "₹9,000"],
+              ["Growth", "8 Videos", "₹17,000"],
+              ["Pro", "12 Videos", "₹24,000"]
+            ]
+          },
+          features: [
+            "Creative concept, scroll-stopping hook, and script",
+            "AI-generated visuals with property images/video integration",
+            "AI voiceover and AI presenter (if required)",
+            "Cinematic property visuals, professional editing, captions & text animations",
+            "Music & SFX, branding, CTA — 9:16 vertical, Reels-ready format",
+            "1 revision included"
+          ]
+        },
+        {
+          heading: "Human UGC Videos",
+          pricing: [{ label: "Price:", value: "₹3,000 / video (minimum order: 2 videos)" }],
+          packages: {
+            columns: ["Package", "Videos", "Price"],
+            rows: [
+              ["Starter", "2 Videos", "₹6,000"],
+              ["Growth", "5 Videos", "₹15,000"],
+              ["Pro", "8 Videos", "₹24,000"],
+              ["Premium", "10 Videos", "₹30,000"]
+            ]
+          },
+          features: [
+            "Real UGC creator — concept, hook, and script",
+            "On-ground shooting of property/project presentation",
+            "Professional editing, captions, text animations, music & SFX",
+            "Branding, CTA, 9:16 format, 1 revision included"
+          ]
+        }
+      ]
+    },
+    {
+      number: 3,
+      id: "website",
+      title: "3. Real Estate Website",
+      pricing: [
+        { label: "Setup:", value: "₹25,000 – ₹40,000 — depends on complexity & feature set" },
+        { label: "Included:", value: "3 years hosting + 1 year email hosting" }
+      ],
+      sections: [
+        {
+          heading: "Website Pages",
+          features: [
+            "Home, About Us, Contact Us, FAQ, Testimonials, Blog/News (optional)",
+            "Properties, Property Details, Property Categories (Residential & Commercial)",
+            "Projects, Locations, Services, Privacy Policy, Terms & Conditions"
+          ]
+        },
+        {
+          heading: "Property Listing System",
+          features: [
+            "Add / edit / delete properties with images, videos, price, and area",
+            "BHK, bedrooms, bathrooms, parking, property type & status",
+            "Amenities, location, Google Maps, floor plans, brochure, possession & developer details"
+          ]
+        },
+        {
+          heading: "Search, Filters & Property Detail Page",
+          features: [
+            "Search & filter by location, budget, property type, BHK, area, price, amenities, availability",
+            "Property gallery, overview, specifications, floor plan, nearby places & map",
+            "WhatsApp CTA, Call CTA, enquiry form, request callback, schedule site visit"
+          ]
+        },
+        {
+          heading: "Lead Generation & Site Visit Booking",
+          features: [
+            "Enquire Now, Get Price, Request Callback, WhatsApp, Call Now, Download Brochure",
+            "Full site visit flow — property & date/time selection, booking confirmation, rescheduling, cancellation, admin notification"
+          ]
+        },
+        {
+          heading: "Property Landing Pages",
+          pricing: [{ label: "Price:", value: "₹7,000 – ₹15,000 / page" }],
+          features: [
+            "High-converting standalone landing page per project/property",
+            "Gallery, pricing, amenities, location, floor plans, brochure download",
+            "Enquiry form, WhatsApp CTA, Call CTA, and site-visit CTA"
+          ]
+        },
+        {
+          heading: "Admin Panel & Lead Management",
+          features: [
+            "Admin login with property, lead, enquiry, site-visit, image & content management",
+            "Lead pipeline: New Lead → Contacted → Qualified → Site Visit → Follow-up → Negotiation → Closed/Lost"
+          ]
+        },
+        {
+          heading: "WhatsApp, SEO & Performance",
+          features: [
+            "WhatsApp integration, click-to-call, property-specific messages, contact forms & email notifications",
+            "SEO-friendly URLs, meta tags, sitemap, schema markup, Search Console & Analytics, Meta Pixel",
+            "Mobile optimization, image optimization, SSL, and deployment"
+          ]
+        },
+        {
+          heading: "Optional Add-ons",
+          features: [
+            "Property comparison, wishlist/favourites, user login, property alerts",
+            "EMI / investment calculator, multi-agent profiles, multi-location support",
+            "Blog/CMS, CRM integration, AI property assistant"
+          ]
+        }
+      ]
+    },
+    {
+      number: 4,
+      id: "whatsapp-automation",
+      title: "4. WhatsApp Automation",
+      pricing: [
+        { label: "Setup:", value: "₹10,000 – ₹25,000" },
+        { label: "Monthly:", value: "₹3,000 – ₹10,000 + API Charges" }
+      ],
+      sections: [
+        {
+          heading: "What's Included",
+          features: [
+            "Instant lead response with automated welcome message",
+            "Lead qualification — budget, location, BHK, and property preference",
+            "Property details, recommendations, brochure & media delivery, pricing info",
+            "FAQ automation, automated follow-ups, and lead nurturing",
+            "Appointment & site visit booking, confirmation, reminders, rescheduling",
+            "Lead routing with sales-team notifications and human handoff",
+            "CRM integration and lead status updates"
+          ]
+        },
+        {
+          heading: "Automation Flow",
+          text: "Lead Generated → Instant WhatsApp Reply → Requirement Collection → Lead Qualification → Property Recommendation → Brochure/Details → Follow-up → Site Visit Booking → Sales Team Handoff"
+        }
+      ]
+    },
+    {
+      number: 5,
+      id: "ai-ads",
+      title: "5. AI Ads",
+      sections: [
+        {
+          heading: "AI Ad Creative",
+          pricing: [{ label: "Price:", value: "₹7,000 for 3 videos (minimum order) — larger volumes quoted on request" }],
+          features: [
+            "Ad strategy, target audience angle, and creative concept",
+            "Scroll-stopping hook, ad script, AI visuals & voiceover, AI presenter (if required)",
+            "Professional editing, captions, text animations, music & SFX, branding & CTA",
+            "9:16 Meta Ads format, 1 revision included"
+          ]
+        },
+        {
+          heading: "Human UGC Ads",
+          pricing: [{ label: "Price:", value: "₹3,000 / video (minimum order: 2 videos)" }],
+          features: [
+            "Human UGC creator — concept, hook, script",
+            "Product/property presentation, shooting, and editing",
+            "Captions, text animations, music & SFX, branding, CTA, 9:16 format, 1 revision"
+          ]
+        }
+      ]
+    }
+  ],
+  commercialTerms: {
+    heading: "Important Commercial Terms",
+    items: [
+      {
+        icon: "📢",
+        title: "Ad Spend Excluded",
+        text: "Meta/Google ad spend is not included"
+      },
+      {
+        icon: "💬",
+        title: "WhatsApp API Charges",
+        text: "WhatsApp API charges are not included"
+      },
+      {
+        icon: "📞",
+        title: "AI Calling Usage",
+        text: "AI Calling usage (₹7/minute) is billed separately based on actual call minutes"
+      },
+      {
+        icon: "🤖",
+        title: "AI / LLM API Usage",
+        text: "AI/LLM API usage charges are not included"
+      },
+      {
+        icon: "🌐",
+        title: "Domain & Hosting Terms",
+        text: "Domain renewal after the included 3-year hosting period is charged separately"
+      },
+      {
+        icon: "✈️",
+        title: "Creator Travel & Location",
+        text: "Creator travel/location charges may apply separately for UGC shoots"
+      },
+      {
+        icon: "🎞️",
+        title: "Premium Stock Media",
+        text: "Premium stock footage/assets may be charged separately"
+      },
+      {
+        icon: "🔄",
+        title: "Video Revisions Policy",
+        text: "Each video includes 1 revision — major changes or additional revisions may be charged separately"
+      }
+    ]
+  },
+  nextSteps: {
+    heading: "Next Steps",
+    text: "Choose the services that fit your current stage — start with any single service, or combine the website, AI calling, and WhatsApp automation into one connected lead pipeline. Get in touch to finalise scope and timelines."
+  }
+};
+
 const shortFormVideos = [
   { type: "shoot", tag: "REAL SHOOT", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=7_lpgoxu" },
   { type: "shoot", tag: "REAL SHOOT", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=8_l0wsbr" },
   { type: "shoot", tag: "REAL SHOOT", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=prakhar_properties_1778384102_3893172810243885227_73535257018_zi9osj" },
   { type: "shoot", tag: "REAL SHOOT", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=prakhar_properties_1778305436_3892698647800481401_73535257018_ybkmvq" },
-  { type: "shoot", tag: "REAL SHOOT", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=prakhar_properties_1778047823_3890849699595157209_73535257018_yo65rr" },
-  { type: "shoot", tag: "REAL SHOOT", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=__%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80_%E0%A4%97%E0%A5%80%E0%A4%A4%E0%A4%BE_%E0%A4%95%E0%A5%81%E0%A4%82%E0%A4%9C_%E0%A4%87%E0%A4%A8%E0%A5%8D%E0%A4%AB%E0%A5%8D%E0%A4%B0%E0%A4%BE_%E0%A4%AC%E0%A4%BF%E0%A4%B2%E0%A5%8D%E0%A4%A1_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%87%E0%A4%B5%E0%A5%87%E0%A4%9F_%E0%A4%B2%E0%A4%BF%E0%A4%AE%E0%A4%BF%E0%A4%9F%E0%A5%87%E0%A4%A1_%E0%A4%95%E0%A5%80_%E0%A4%A4%E0%A4%B0%E0%A4%AB%E0%A4%BC_%E0%A4%B8%E0%A5%87_%E0%A4%9C%E0%A4%BC%E0%A4%AC%E0%A4%B0%E0%A4%A6%E0%A4%B8%E0%A5%8D%E0%A4%A4_%E0%A4%85%E0%A4%A8%E0%A4%BE%E0%A4%89%E0%A4%82%E0%A4%B8%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F__%E0%A4%B2%E0%A4%96%E0%A4%A8%E0%A4%8A_SCR_%E0%A4%AE%E0%A5%87%E0%A4%82_xkttqd" },
   { type: "ugc", tag: "AI UGC", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=Edited_wlnmjv" },
   { type: "ugc", tag: "AI UGC", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=Ai_ugc_10_ygvpdh" },
-  { type: "ugc", tag: "AI UGC", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=ai_ugc_9_ovpev5" },
   { type: "ugc", tag: "AI UGC", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=0404_itrkrs" }
+];
+
+const clientWebsites = [
+  {
+    title: "Prakhar Properties & Infra",
+    domain: "prakharproperties.com",
+    liveUrl: "https://prakharproperties.com",
+    category: "Real Estate Developer Portal",
+    url: "/portfolio_website_1.png"
+  },
+  {
+    title: "Shree Geeta Kunj Infra",
+    domain: "shreegeetakunjinfra.com",
+    liveUrl: "https://shreegeetakunjinfra.com",
+    category: "Township & Villa Launch Page",
+    url: "/portfolio_website_2.png"
+  },
+  {
+    title: "Sobha Luxury Residences",
+    domain: "sobharealty.com",
+    liveUrl: "https://sobharealty.com",
+    category: "High-End Agency Platform",
+    url: "/portfolio_website_3.png"
+  }
 ];
 
 export default function OfferPage() {
@@ -331,14 +647,13 @@ export default function OfferPage() {
   const [modalVideoUrl, setModalVideoUrl] = useState("");
   const [creativeFilter, setCreativeFilter] = useState("all");
   const [playingIndex, setPlayingIndex] = useState(null);
-  const [pricingMode, setPricingMode] = useState("calc"); // 'calc' or 'plans'
+  const [activeServiceTab, setActiveServiceTab] = useState("ai-calling");
+  const [pricingMode, setPricingMode] = useState("calc");
 
   useEffect(() => {
     const handleKey = (e) => { if (e.key === "Escape") setShowVideo(false); };
     window.addEventListener("keydown", handleKey);
-    return () => {
-      window.removeEventListener("keydown", handleKey);
-    };
+    return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
   useEffect(() => {
@@ -371,19 +686,24 @@ export default function OfferPage() {
       };
     })(window, "https://app.cal.com/embed/embed.js", "init");
 
-    window.Cal("init", "30min", { origin: "https://app.cal.com" });
-
-    window.Cal.ns["30min"]("inline", {
-      elementOrSelector: "#my-cal-inline-30min",
-      config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true", "theme": "dark" },
-      calLink: "harshustle/30min",
-    });
-
-    window.Cal.ns["30min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view", "theme": "dark" });
+    try {
+      window.Cal("init", "30min", { origin: "https://app.cal.com" });
+      window.Cal.ns["30min"]("inline", {
+        elementOrSelector: "#my-cal-inline-30min",
+        config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true", "theme": "dark" },
+        calLink: "harshustle/30min",
+      });
+      window.Cal.ns["30min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view", "theme": "dark" });
+    } catch (_) {}
   }, []);
 
   const toggleFaq = (i) => {
     setActiveIndex(activeIndex === i ? null : i);
+  };
+
+  const openVideoInModal = (url) => {
+    setModalVideoUrl(url + "&autoplay=true&controls=true");
+    setShowVideo(true);
   };
 
   const getThumbnail = (url) => {
@@ -395,18 +715,26 @@ export default function OfferPage() {
     return "https://res.cloudinary.com/dobulag2p/image/upload/v1778540902/__I_know_Your_Problem_202605120355_srntis.jpg";
   };
 
-  const openVideoInModal = (url) => {
-    setModalVideoUrl(url + "&autoplay=true&controls=true");
-    setShowVideo(true);
-  };
-
   const filteredVideos = shortFormVideos.filter(
     (v) => creativeFilter === "all" || v.type === creativeFilter
   );
 
   return (
     <div className="offer-page">
-      {/* FULLSCREEN VIDEO MODAL */}
+      {/* AMBIENT GLOWING GRID BACKGROUND ELEMENTS */}
+      <div className="bg-grid-glow-container">
+        <div className="grid-glow-orb orb-1"></div>
+        <div className="grid-glow-orb orb-2"></div>
+        <div className="grid-glow-orb orb-3"></div>
+        <div className="grid-glow-orb orb-4"></div>
+
+        {/* GLOWING GRID HIGHLIGHT BOXES AT VARIOUS SPOTS */}
+        <div className="grid-highlight-box box-1"></div>
+        <div className="grid-highlight-box box-2"></div>
+        <div className="grid-highlight-box box-3"></div>
+      </div>
+
+      {/* VSL MODAL */}
       {showVideo && (
         <div className="vsl-modal-backdrop" onClick={() => setShowVideo(false)}>
           <div className="vsl-modal" onClick={(e) => e.stopPropagation()}>
@@ -418,7 +746,7 @@ export default function OfferPage() {
               frameBorder="0"
               allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
               allowFullScreen
-              title="VSL Video"
+              title="Proposal Demo Video"
               style={{ display: "block", border: 0 }}
             />
           </div>
@@ -429,22 +757,22 @@ export default function OfferPage() {
       <header className="navbar-wrap">
         <div className="navbar-container">
           <ul className="navbar-links">
-            <li><a href="#how-it-works" className="navbar-link">Prebuilt</a></li>
-            <li><a href="#short-form" className="navbar-link">Customized</a></li>
+            <li><a href="#pricing-summary" className="navbar-link">Pricing Summary</a></li>
+            <li><a href="#services" className="navbar-link">Services</a></li>
           </ul>
           <div className="navbar-logo">
             wstatemedia
           </div>
           <div className="navbar-actions">
             <ul className="navbar-links">
-              <li><a href="#why-work" className="navbar-link">About Us</a></li>
+              <li><a href="#calculator" className="navbar-link">Calculator</a></li>
             </ul>
             <a href="#cta" className="navbar-btn">Contact Us</a>
           </div>
         </div>
       </header>
 
-      {/* HERO SECTION */}
+      {/* ORIGINAL HERO SECTION - EXACT AND UNTOUCHED */}
       <section className="hero">
         <div className="container">
           <div className="hero-tag-wrap">
@@ -465,7 +793,7 @@ export default function OfferPage() {
             <a href="#cta" className="btn-black-pill">
               Let's Explore →
             </a>
-            <a href="#build-package" className="btn-outline-pill">
+            <a href="#calculator" className="btn-outline-pill">
               Contact Us
             </a>
           </div>
@@ -501,7 +829,7 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* FEATURE TO OUTCOME (Screenshot 1) */}
+      {/* FEATURE TO OUTCOME SECTION */}
       <section className="feature-outcome-section">
         <div className="container">
           <div className="section-title">
@@ -523,7 +851,7 @@ export default function OfferPage() {
             <div className="outcome-column">
               <div className="outcome-card">
                 <div className="outcome-tag">ADVANTAGE</div>
-                <div className="outcome-title">You test 5–10x more than a traditional agency</div>
+                <div className="outcome-title">You test 5–10× more than a traditional agency</div>
               </div>
               <div className="outcome-card outcome-card--highlight">
                 <div className="outcome-tag outcome-tag--highlight">BUSINESS RESULT</div>
@@ -534,48 +862,27 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS PROCESS (Screenshot 2) */}
-      <section id="how-it-works">
-        <div className="container">
-          <div className="section-title">
-            <div className="hero-label">— HOW IT WORKS</div>
-            <h2>From strategy call to live ads in under a week.</h2>
-          </div>
-          <div className="how-steps-grid">
-            {howItWorksSteps.map((item) => (
-              <div className="how-step-card" key={item.step}>
-                <div className="how-step-top">
-                  <span className="how-step-num">{item.step}</span>
-                </div>
-                <h3>{item.title}</h3>
-                <p className="how-step-desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
+      {/* INFINITE MARQUEE TICKER BAR */}
+      <div className="marquee-bar">
+        <div className="marquee-track">
+          <div className="marquee-item">COASTAL REALTY <span className="marquee-stat">CPL -41%</span> •</div>
+          <div className="marquee-item">IRONGATE PROPERTIES <span className="marquee-stat">ROAS 5.6x</span> •</div>
+          <div className="marquee-item">PINEHURST LUXURY <span className="marquee-stat">Bookings +212%</span> •</div>
+          <div className="marquee-item">APEX REAL ESTATE <span className="marquee-stat">ROAS 4.1x</span> •</div>
+          <div className="marquee-item">BRIGHTSMILE HOMES <span className="marquee-stat">CPA -38%</span> •</div>
+          <div className="marquee-item">SUMMIT DEVELOPERS <span className="marquee-stat">CTR +156%</span> •</div>
+          {/* continuous loop duplicate */}
+          <div className="marquee-item">COASTAL REALTY <span className="marquee-stat">CPL -41%</span> •</div>
+          <div className="marquee-item">IRONGATE PROPERTIES <span className="marquee-stat">ROAS 5.6x</span> •</div>
+          <div className="marquee-item">PINEHURST LUXURY <span className="marquee-stat">Bookings +212%</span> •</div>
+          <div className="marquee-item">APEX REAL ESTATE <span className="marquee-stat">ROAS 4.1x</span> •</div>
+          <div className="marquee-item">BRIGHTSMILE HOMES <span className="marquee-stat">CPA -38%</span> •</div>
+          <div className="marquee-item">SUMMIT DEVELOPERS <span className="marquee-stat">CTR +156%</span> •</div>
         </div>
+      </div>
 
-        {/* INFINITE MARQUEE TICKER AT BOTTOM OF HOW IT WORKS (Screenshot 2) */}
-        <div className="marquee-bar">
-          <div className="marquee-track">
-            <div className="marquee-item">COASTAL REALTY <span className="marquee-stat">CPL -41%</span> •</div>
-            <div className="marquee-item">IRONGATE PROPERTIES <span className="marquee-stat">ROAS 5.6x</span> •</div>
-            <div className="marquee-item">PINEHURST LUXURY <span className="marquee-stat">Bookings +212%</span> •</div>
-            <div className="marquee-item">APEX REAL ESTATE <span className="marquee-stat">ROAS 4.1x</span> •</div>
-            <div className="marquee-item">BRIGHTSMILE HOMES <span className="marquee-stat">CPA -38%</span> •</div>
-            <div className="marquee-item">SUMMIT DEVELOPERS <span className="marquee-stat">CTR +156%</span> •</div>
-            {/* duplicate for continuous loop */}
-            <div className="marquee-item">COASTAL REALTY <span className="marquee-stat">CPL -41%</span> •</div>
-            <div className="marquee-item">IRONGATE PROPERTIES <span className="marquee-stat">ROAS 5.6x</span> •</div>
-            <div className="marquee-item">PINEHURST LUXURY <span className="marquee-stat">Bookings +212%</span> •</div>
-            <div className="marquee-item">APEX REAL ESTATE <span className="marquee-stat">ROAS 4.1x</span> •</div>
-            <div className="marquee-item">BRIGHTSMILE HOMES <span className="marquee-stat">CPA -38%</span> •</div>
-            <div className="marquee-item">SUMMIT DEVELOPERS <span className="marquee-stat">CTR +156%</span> •</div>
-          </div>
-        </div>
-      </section>
-
-      {/* SOCIAL PROOF (Screenshot 3) */}
-      <section>
+      {/* SOCIAL PROOF SECTION */}
+      <section className="social-proof-section">
         <div className="container">
           <div className="section-title">
             <div className="hero-label">— SOCIAL PROOF</div>
@@ -628,8 +935,191 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* SHORT FORM STYLES */}
-      <section id="short-form">
+      {/* PRICING SUMMARY SECTION */}
+      <section id="pricing-summary">
+        <div className="container">
+          <div className="section-title">
+            <div className="hero-label">EXECUTIVE SUMMARY</div>
+            <h2>{proposalData.pricingSummary.heading}</h2>
+            <p>{proposalData.pricingSummary.note}</p>
+          </div>
+
+          <div className="table-responsive">
+            <table className="summary-table">
+              <thead>
+                <tr>
+                  {proposalData.pricingSummary.columns.map((col, idx) => (
+                    <th key={idx}>{col}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {proposalData.pricingSummary.rows.map((row, idx) => (
+                  <tr key={idx}>
+                    <td><strong>{row[0]}</strong></td>
+                    <td><span className="price-tag">{row[1]}</span></td>
+                    <td><span className="usage-tag">{row[2]}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES DETAILED SCOPE SECTION */}
+      <section id="services">
+        <div className="container">
+          <div className="section-title">
+            <div className="hero-label">DETAILED SCOPE</div>
+            <h2>Services Breakdown</h2>
+            <p>Comprehensive deliverables for each of the 5 modular services below.</p>
+          </div>
+
+          {/* SERVICE NAVIGATION TABS */}
+          <div className="service-tabs">
+            {proposalData.services.map((svc) => (
+              <button
+                key={svc.id}
+                className={activeServiceTab === svc.id ? "active" : ""}
+                onClick={() => setActiveServiceTab(svc.id)}
+              >
+                {svc.title}
+              </button>
+            ))}
+          </div>
+
+          {/* SERVICE TAB CONTENT */}
+          {proposalData.services.map((svc) => {
+            if (activeServiceTab !== svc.id) return null;
+
+            return (
+              <div className="service-scope-card" key={svc.id}>
+                <div className="scope-header">
+                  <div>
+                    <span className="scope-num">SERVICE 0{svc.number}</span>
+                    <h3>{svc.title}</h3>
+                  </div>
+
+                  {svc.pricing && (
+                    <div className="scope-pricing-badge">
+                      {svc.pricing.map((p, idx) => (
+                        <div key={idx} className={idx === 0 ? "p-main" : "p-sub"}>
+                          <strong>{p.label}</strong> {p.value}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="service-details-container" style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+                  {svc.sections.map((sec, idx) => (
+                    <div className="video-pkg-box" key={idx}>
+                      <h4 style={{ fontSize: "18px", fontWeight: "800", marginBottom: "10px", color: "var(--dark)" }}>
+                        {sec.heading}
+                      </h4>
+
+                      {sec.pricing && (
+                        <div style={{ marginBottom: "12px" }}>
+                          {sec.pricing.map((pr, pidx) => (
+                            <span key={pidx} className="price-tag" style={{ marginRight: "10px" }}>
+                              {pr.label} {pr.value}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {sec.packages && (
+                        <div className="table-responsive" style={{ margin: "16px 0" }}>
+                          <table className="summary-table">
+                            <thead>
+                              <tr>
+                                {sec.packages.columns.map((c, cidx) => (
+                                  <th key={cidx}>{c}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {sec.packages.rows.map((r, ridx) => (
+                                <tr key={ridx}>
+                                  <td><strong>{r[0]}</strong></td>
+                                  <td>{r[1]}</td>
+                                  <td><span className="price-tag">{r[2]}</span></td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+
+                      {sec.features && (
+                        <ul className="scope-list mt-12">
+                          {sec.features.map((feat, fidx) => (
+                            <li key={fidx}>{feat}</li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {sec.text && (
+                        <div className="flow-node flow-node--highlight" style={{ marginTop: "12px" }}>
+                          {sec.text}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* CLIENT WEBSITES PORTFOLIO SHOWCASE SECTION */}
+      <section id="websites">
+        <div className="container">
+          <div className="section-title">
+            <div className="hero-label">CLIENT PORTFOLIO</div>
+            <h2>Websites We've Built</h2>
+            <p>High-converting real estate websites &amp; portals built for our clients.</p>
+          </div>
+
+          <div className="website-portfolio-grid">
+            {clientWebsites.map((site, idx) => (
+              <div key={idx} className="website-card">
+                <div className="website-browser-frame">
+                  <div className="browser-header">
+                    <div className="browser-dots">
+                      <span className="browser-dot browser-dot--red"></span>
+                      <span className="browser-dot browser-dot--yellow"></span>
+                      <span className="browser-dot browser-dot--green"></span>
+                    </div>
+                    <div className="browser-url-bar">{site.domain}</div>
+                  </div>
+                  <div className="website-preview-image-wrap">
+                    <img src={site.url} alt={site.title} className="website-preview-img" />
+                    <div className="website-hover-overlay">
+                      <a href={site.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-black-pill" style={{ padding: "10px 20px", fontSize: "13px" }}>
+                        Visit Live Site ↗
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="website-card-body">
+                  <span className="website-category">{site.category}</span>
+                  <h3 className="website-card-title">{site.title}</h3>
+                  <a href={site.liveUrl} target="_blank" rel="noopener noreferrer" className="website-link">
+                    Visit {site.domain} →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SHORT FORM SAMPLES SHOWCASE */}
+      <section id="short-form-samples">
         <div className="container">
           <div className="section-title">
             <h2>SHORT FORM STYLES</h2>
@@ -653,7 +1143,7 @@ export default function OfferPage() {
                     frameBorder="0"
                     allow="autoplay; fullscreen"
                     allowFullScreen
-                    title={`Short Video ${idx}`}
+                    title={`Video Sample ${idx}`}
                   />
                 ) : (
                   <>
@@ -674,27 +1164,29 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* WHY WORK WITH US */}
-      <section id="why-work">
+      {/* COMMERCIAL TERMS SECTION */}
+      <section id="terms">
         <div className="container">
           <div className="section-title">
-            <h2>WHY WORK WITH US?</h2>
-            <p>Most real estate teams hire separate vendors. We built one integrated system that actually converts.</p>
+            <div className="hero-label">TRANSPARENCY</div>
+            <h2>{proposalData.commercialTerms.heading}</h2>
+            <p>Clear, upfront business terms for all digital &amp; AI services.</p>
           </div>
 
-          <div className="how-steps-grid">
-            {whyUsReasons.map((item) => (
-              <div className="how-step-card" key={item.title}>
-                <h3>{item.title}</h3>
-                <p className="how-step-desc">{item.desc}</p>
+          <div className="terms-grid">
+            {proposalData.commercialTerms.items.map((term, idx) => (
+              <div className="term-card" key={idx}>
+                <div className="term-icon">{term.icon}</div>
+                <div className="term-title">{term.title}</div>
+                <p>{term.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PRICING SECTION: BOTH CALCULATOR AND FIXED PLANS (Screenshot 4) */}
-      <section className="pricing-section" id="build-package">
+      {/* PRICING & PACKAGES SECTION */}
+      <section className="pricing-section" id="calculator">
         <div className="container">
           <div className="section-title">
             <div className="hero-label">— PRICING &amp; PACKAGES</div>
@@ -702,7 +1194,6 @@ export default function OfferPage() {
             <p>Choose between our fixed monthly growth plans or custom build your exact package with our live calculator.</p>
           </div>
 
-          {/* TOGGLE BUTTONS FOR CALCULATOR VS PLANS */}
           <div className="pricing-mode-toggle">
             <button
               className={`pricing-mode-btn${pricingMode === 'calc' ? ' active' : ''}`}
@@ -718,10 +1209,8 @@ export default function OfferPage() {
             </button>
           </div>
 
-          {/* OPTION 1: CUSTOM CALCULATOR */}
           {pricingMode === 'calc' && <PricingCalculator />}
 
-          {/* OPTION 2: FIXED PLANS GRID (Screenshot 4) */}
           {pricingMode === 'plans' && (
             <div>
               <div className="plans-grid">
@@ -752,7 +1241,6 @@ export default function OfferPage() {
                 ))}
               </div>
 
-              {/* 30-DAY GUARANTEE BANNER */}
               <div className="plan-guarantee">
                 <div className="guarantee-icon">🛡️</div>
                 <div>
@@ -767,7 +1255,7 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* ORIGINAL FAQ SECTION */}
       <section>
         <div className="container">
           <div className="section-title">
@@ -793,7 +1281,7 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* FINAL CTA & CALENDAR BOOKING */}
       <section className="final" id="cta">
         <div className="container" style={{ textAlign: "center" }}>
           <div className="section-title">
@@ -807,7 +1295,7 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* ORIGINAL FOOTER */}
       <footer className="offer-footer">
         <div className="container">
           <div className="offer-footer-grid">
