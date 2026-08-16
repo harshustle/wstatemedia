@@ -688,12 +688,23 @@ export default function OfferPage() {
 
     try {
       window.Cal("init", "30min", { origin: "https://app.cal.com" });
+      window.Cal.config = window.Cal.config || {};
+      window.Cal.config.forwardQueryParams = true;
+
       window.Cal.ns["30min"]("inline", {
         elementOrSelector: "#my-cal-inline-30min",
-        config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true", "theme": "dark" },
-        calLink: "harshustle/30min",
+        config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true" },
+        calLink: "wstate/30min",
       });
-      window.Cal.ns["30min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view", "theme": "dark" });
+
+      window.Cal.ns["30min"]("ui", {
+        "cssVarsPerTheme": {
+          "light": { "cal-brand": "#167bff" },
+          "dark": { "cal-brand": "#ffffff" }
+        },
+        "hideEventTypeDetails": false,
+        "layout": "month_view"
+      });
     } catch (_) {}
   }, []);
 
@@ -1287,6 +1298,9 @@ export default function OfferPage() {
           <div className="section-title">
             <h2>Stop Posting. Start Converting.</h2>
             <p>Build your high-converting real estate acquisition machine today.</p>
+            <p style={{ marginTop: "12px", fontSize: "15px", fontWeight: "700" }}>
+              Direct Contact: <a href="mailto:wstatemedia@gmail.com" style={{ color: "var(--light-blue-dark)", textDecoration: "underline" }}>wstatemedia@gmail.com</a>
+            </p>
           </div>
 
           <div style={{ maxWidth: "800px", margin: "auto", borderRadius: "16px", overflow: "hidden", background: "#fff", border: "1px solid #e2e8f0", padding: "20px" }}>
@@ -1320,7 +1334,8 @@ export default function OfferPage() {
             <div>
               <div className="offer-footer-heading">Contact</div>
               <ul className="offer-footer-links">
-                <li><a href="https://cal.com/harshustle/30min" target="_blank" rel="noopener noreferrer">Book Strategy Call</a></li>
+                <li><a href="mailto:wstatemedia@gmail.com">wstatemedia@gmail.com</a></li>
+                <li><a href="https://cal.com/wstate/30min" target="_blank" rel="noopener noreferrer">Book Strategy Call</a></li>
               </ul>
             </div>
           </div>
