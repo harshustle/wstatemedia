@@ -3,20 +3,24 @@ import "./OfferPage.css";
 
 const faqs = [
   {
-    q: "Do you run Meta and Google ad campaigns for US real estate?",
-    a: "Yes. We launch and scale Meta & Google ad campaigns engineered specifically for US real estate lead generation, targeting active buyers and investors.",
+    q: "Do you run Meta and Google ad campaigns for real estate & businesses?",
+    a: "Yes. We launch and scale Meta & Google ad campaigns engineered specifically for high-intent lead generation, targeting active buyers, investors, and clients.",
   },
   {
     q: "Can you build custom landing pages & funnels?",
-    a: "Absolutely. We build high-converting acquisition funnels with floor plans, virtual tours, clear pricing transparency, and showing/site-visit CTAs.",
+    a: "Absolutely. We build high-converting acquisition funnels with interactive sections, virtual media, clear pricing transparency, and instant booking/consultation CTAs.",
   },
   {
-    q: "Do you provide AI lead qualification & SMS automation?",
-    a: "Yes. We integrate 24/7 AI chatbots, SMS/CRM follow-up automation, and instant budget/timeline screening before leads reach your sales team.",
+    q: "What is included in the Healthcare Management System?",
+    a: "A full doctor and clinic appointment booking system, patient electronic records, automated WhatsApp & SMS reminder alerts, prescription/billing management, and staff access control.",
+  },
+  {
+    q: "Do you provide AI lead qualification & calling automation?",
+    a: "Yes. We configure conversational AI calling agents (inbound & outbound @ ₹7/min) and 24/7 WhatsApp chatbots that pre-qualify budget, timeline, and requirements before human handoff.",
   },
   {
     q: "Who is this for?",
-    a: "US & international real estate agents, brokers, luxury developers, wholesalers, and real estate growth teams.",
+    a: "Real estate developers, agencies, brokers, doctors, clinics, hospital networks, service businesses, and high-growth brands seeking automated client acquisition.",
   },
 ];
 
@@ -31,33 +35,49 @@ const calcServices = [
   },
   {
     id: "ai_videos",
-    label: "AI Real Estate Videos",
-    unitPrice: 2500,
+    label: "AI Videos (UGC / Storytelling Ads)",
+    unitPrice: 3000,
     unit: "video",
     hasQty: true,
-    min: 4,
-    max: 20,
+    min: 2,
+    max: 30,
     defaultQty: 4,
-    note: "Creative concept, AI visuals, voiceover/presenter, 9:16 format & captions."
+    note: "Creative concept, script, AI visuals/presenter, storytelling hooks, 9:16 vertical & captions."
   },
   {
     id: "ugc_videos",
-    label: "Human UGC Real Estate Videos",
+    label: "Human Videos (UGC / Real Shoot)",
     unitPrice: 3000,
     unit: "video",
     hasQty: true,
     min: 2,
     max: 20,
     defaultQty: 2,
-    note: "Real UGC creator, on-ground shoot, editing, 9:16 format (min order: 2)."
+    note: "Real UGC creator on-ground shoot, script presentation, editing, branding & 9:16 format."
   },
   {
-    id: "website",
-    label: "Real Estate Website Setup",
-    unitPrice: 25000,
+    id: "healthcare",
+    label: "Healthcare Management System",
+    unitPrice: 40000,
     unit: null,
     hasQty: false,
-    note: "Includes 3-Yr Hosting + 1-Yr Email, Property Listing System & Site Visit Flow."
+    note: "Clinic/hospital portal: doctor scheduling, patient records, WhatsApp/SMS alerts & billing system."
+  },
+  {
+    id: "website_basic",
+    label: "Website Setup — Basic",
+    unitPrice: 40000,
+    unit: null,
+    hasQty: false,
+    note: "Includes 3-Yr Hosting + 1-Yr Email, modern responsive design, listing/catalog & inquiry capture."
+  },
+  {
+    id: "website_advance",
+    label: "Website Setup — Advanced",
+    unitPrice: 90000,
+    unit: null,
+    hasQty: false,
+    note: "High-end custom portal, advanced filters, dynamic CMS, CRM integration & multi-tier flow."
   },
   {
     id: "landing",
@@ -68,46 +88,38 @@ const calcServices = [
     min: 1,
     max: 10,
     defaultQty: 1,
-    note: "High-converting standalone project page with gallery, floor plans & brochure download."
+    note: "High-converting standalone landing page with gallery, floor plans & brochure download."
   },
   {
-    id: "whatsapp",
-    label: "WhatsApp Automation Setup",
+    id: "ads_funnel",
+    label: "Ads Campaign & Acquisition Funnel Setup",
     unitPrice: 10000,
     unit: null,
     hasQty: false,
-    note: "Instant welcome reply, requirement collection, qualification & site visit routing."
+    note: "Targeted Meta & Google ads strategy, high-converting funnel mapping & conversion tracking."
   },
   {
-    id: "ai_ads",
-    label: "AI Ad Creative (3 Meta Videos)",
-    unitPrice: 7000,
+    id: "whatsapp",
+    label: "WhatsApp Lead Automation Setup",
+    unitPrice: 10000,
     unit: null,
     hasQty: false,
-    note: "Ad strategy, scroll-stopping hooks, AI visuals & voiceover (3 videos)."
-  },
-  {
-    id: "ugc_ads",
-    label: "Human UGC Ads (2 Meta Videos)",
-    unitPrice: 6000,
-    unit: null,
-    hasQty: false,
-    note: "Human UGC creator presentation shoot & ad editing (min 2 videos)."
+    note: "Instant welcome reply, requirement collection, automated qualification & appointment routing."
   }
 ];
 
 const fixedPlans = [
   {
     name: "Starter Package",
-    desc: "For individual realtors & small agencies getting started with AI lead generation.",
-    price: "₹35,000",
+    desc: "For individual realtors, clinics & emerging brands getting started with digital acquisition.",
+    price: "₹45,000",
     period: "one-time",
-    billed: "Includes Website, 4 AI Videos & WhatsApp Setup",
+    billed: "Includes Basic Website, 4 AI Videos & WhatsApp Lead Setup",
     popular: false,
     btnText: "Choose Starter",
     features: [
-      "Real Estate Website (3-yr hosting)",
-      "4 AI Real Estate Reels / Shorts",
+      "Modern Website (Includes 3-yr hosting)",
+      "4 AI UGC / Storytelling Ads (9:16 format)",
       "WhatsApp Lead Automation Setup",
       "AI Calling System Integration",
       "Lead Management & Admin Panel"
@@ -115,35 +127,36 @@ const fixedPlans = [
   },
   {
     name: "Growth Acquisition Package",
-    desc: "Complete digital & AI acquisition system built to scale lead generation.",
-    price: "₹65,000",
+    desc: "Complete digital & AI acquisition system built to scale qualified leads & appointments.",
+    price: "₹85,000",
     period: "one-time",
     billed: "Best value • Full connected lead pipeline",
     popular: true,
     btnText: "Book Strategy Call",
     features: [
-      "Advanced Real Estate Portal & Custom Filters",
-      "8 AI Real Estate Videos + 2 Human UGC Videos",
-      "AI Calling System Setup + Agent Creation",
-      "WhatsApp Nurturing & Site Visit Automation",
-      "3 AI Meta/Google Ad Creatives",
-      "Dedicated Onboarding & Strategy"
+      "Advanced Web Portal & Custom Interactive Filters",
+      "8 AI Storytelling Videos + 2 Human UGC Videos",
+      "Landing Page & Ads Funnel Architecture",
+      "AI Calling System Setup + Agent Creation (₹7/min)",
+      "WhatsApp Nurturing & Appointment Automation",
+      "Dedicated Onboarding & Growth Strategy"
     ]
   },
   {
-    name: "Enterprise Developer Suite",
-    desc: "For property builders & large developers scaling multiple project launches.",
-    price: "Custom",
-    period: "",
-    billed: "Tailored scope for multi-project launches",
+    name: "Enterprise & Healthcare Suite",
+    desc: "For hospital chains, luxury developers & enterprises scaling multi-channel infrastructure.",
+    price: "₹1,20,000+",
+    period: "one-time / custom",
+    billed: "Tailored scope for high-volume operations",
     popular: false,
     btnText: "Talk to Sales",
     features: [
+      "Full Healthcare Management System / Advanced Portal",
       "Multiple Standalone Project Landing Pages",
-      "12+ AI Videos & Human UGC Video Series",
-      "Custom AI Knowledge Base & CRM Integration",
-      "Multi-Agent WhatsApp & AI Calling Infrastructure",
-      "Priority Production Queue & Retainer Support"
+      "12+ AI Videos & Human UGC Series",
+      "Multi-Agent AI Calling & 24/7 Automated Infrastructure",
+      "Custom CRM/EHR Integration & Priority Queue",
+      "Retainer Growth Support & Campaign Management"
     ]
   }
 ];
@@ -159,7 +172,17 @@ function PricingCalculator() {
   const [submitting, setSubmitting] = useState(false);
 
   const toggle = (id) => {
-    setSelected(prev => ({ ...prev, [id]: !prev[id] }));
+    setSelected(prev => {
+      const next = { ...prev, [id]: !prev[id] };
+      // Keep Basic and Advanced website tiers cleanly selectable
+      if (id === "website_basic" && next.website_basic) {
+        next.website_advance = false;
+      }
+      if (id === "website_advance" && next.website_advance) {
+        next.website_basic = false;
+      }
+      return next;
+    });
   };
 
   const changeQty = (id, delta) => {
@@ -167,7 +190,7 @@ function PricingCalculator() {
       const svc = calcServices.find(s => s.id === id);
       const minQty = svc ? (svc.min || 1) : 1;
       const currentQty = prev[id] || (svc ? svc.defaultQty : 1) || 1;
-      const maxQty = svc ? svc.max : 20;
+      const maxQty = svc ? (svc.max || 30) : 30;
       const next = Math.min(maxQty, Math.max(minQty, currentQty + delta));
       return { ...prev, [id]: next };
     });
@@ -340,21 +363,23 @@ const proposalData = {
   },
   overview: {
     heading: "Overview",
-    text: "This proposal outlines a complete suite of digital and AI-powered services built specifically for real estate businesses — builders, developers, agencies and independent realtors. Each service below is modular: pick a single service to start, or combine them into a connected system where your website, AI calling, WhatsApp automation and video content all feed a single lead pipeline."
+    text: "This proposal outlines a complete suite of digital and AI-powered services built for real estate developers, healthcare providers, and high-growth businesses. Each service below is modular: pick a single service to start, or combine them into an automated client acquisition engine."
   },
   pricingSummary: {
     heading: "Pricing Summary",
     columns: ["Service", "Setup / One-Time", "Monthly / Usage"],
     rows: [
       ["AI Calling System", "₹10,000 (setup + agent creation)", "₹7 / minute (usage)"],
-      ["AI Real Estate Videos", "From ₹2,500 / video", "—"],
-      ["Human UGC Videos", "From ₹3,000 / video (min. 2)", "—"],
-      ["Real Estate Website", "₹25,000 – ₹40,000 (by complexity)", "Incl. 3-yr hosting + 1-yr email"],
-      ["WhatsApp Automation", "₹10,000 – ₹25,000", "₹3,000 – ₹10,000 + API charges"],
-      ["AI Ads (Creative)", "₹7,000 / 3 videos (min. 3)", "—"],
-      ["Human UGC Ads", "From ₹3,000 / video (min. 2)", "—"]
+      ["AI Videos (UGC / Storytelling Ads)", "₹3,000 / video", "—"],
+      ["Human Videos (UGC / Real Shoot)", "₹3,000 / video (min. 2)", "—"],
+      ["Healthcare Management System", "₹40,000 (one-time setup)", "Optional maintenance/SMS"],
+      ["Website Development (Basic)", "₹40,000 (one-time)", "Incl. 3-yr hosting + 1-yr email"],
+      ["Website Development (Advanced)", "₹90,000 (one-time)", "Incl. 3-yr hosting + 1-yr email"],
+      ["Standalone Project Landing Page", "₹10,000 / page", "—"],
+      ["Ads Campaign & Funnel Setup", "₹10,000 (setup)", "Ad spend separate"],
+      ["WhatsApp Lead Automation", "₹10,000 (setup)", "+ WhatsApp API charges"]
     ],
-    note: "Detailed scope for each service follows below."
+    note: "Official transparent pricing for individual modular services or full growth packages."
   },
   services: [
     {
@@ -369,15 +394,14 @@ const proposalData = {
         {
           heading: "What's Included",
           features: [
-            "AI inbound & outbound calling, with instant lead calling on enquiry",
-            "Lead qualification — budget, location, and BHK / requirement collection",
-            "Property information sharing and FAQ handling",
-            "Lead verification and follow-up calls",
-            "Appointment & site visit booking, confirmation, and rescheduling",
-            "Call reminders, call summaries, and lead status updates",
-            "Human handoff for hot leads",
-            "CRM integration, call recording/transcription (where supported)",
-            "Business-specific AI knowledge base, trained on your properties"
+            "AI inbound & outbound calling with instant automated callback on enquiry",
+            "Lead qualification — budget, timeline, location, and requirement screening",
+            "Information sharing, FAQ handling, and dynamic conversational answers",
+            "Lead verification, appointment scheduling, and site visit booking",
+            "Automated call summaries, audio transcription, and lead disposition tracking",
+            "Seamless live human transfer for hot, ready-to-buy leads",
+            "CRM integration and automated webhook synchronization",
+            "Custom AI knowledge base trained specifically on your business & inventory"
           ]
         }
       ]
@@ -385,30 +409,30 @@ const proposalData = {
     {
       number: 2,
       id: "ai-videos-ugc",
-      title: "2. AI Real Estate Videos & Human UGC Videos",
+      title: "2. AI & Human UGC Videos",
       sections: [
         {
-          heading: "AI Real Estate Videos",
-          pricing: [{ label: "Price:", value: "₹2,500 / video" }],
+          heading: "AI Videos (UGC / Storytelling Ads)",
+          pricing: [{ label: "Price:", value: "₹3,000 / video" }],
           packages: {
             columns: ["Package", "Videos", "Price"],
             rows: [
-              ["Starter", "4 Videos", "₹9,000"],
-              ["Growth", "8 Videos", "₹17,000"],
-              ["Pro", "12 Videos", "₹24,000"]
+              ["Starter", "4 Videos", "₹12,000"],
+              ["Growth", "8 Videos", "₹24,000"],
+              ["Pro", "12 Videos", "₹36,000"]
             ]
           },
           features: [
-            "Creative concept, scroll-stopping hook, and script",
-            "AI-generated visuals with property images/video integration",
-            "AI voiceover and AI presenter (if required)",
-            "Cinematic property visuals, professional editing, captions & text animations",
-            "Music & SFX, branding, CTA — 9:16 vertical, Reels-ready format",
-            "1 revision included"
+            "Scroll-stopping storytelling hooks, creative concept & ad script",
+            "AI-generated UGC visuals, avatar presenter, or property/product visual overlay",
+            "Ultra-realistic AI voiceover in English, Hindi, or target regional accent",
+            "Dynamic captions, cinematic sound effects (SFX), background score & branding",
+            "Optimized for 9:16 vertical (Reels, Shorts, TikTok & Meta Ads)",
+            "1 round of revision included per video"
           ]
         },
         {
-          heading: "Human UGC Videos",
+          heading: "Human Videos (UGC / Real Shoot)",
           pricing: [{ label: "Price:", value: "₹3,000 / video (minimum order: 2 videos)" }],
           packages: {
             columns: ["Package", "Videos", "Price"],
@@ -420,138 +444,131 @@ const proposalData = {
             ]
           },
           features: [
-            "Real UGC creator — concept, hook, and script",
-            "On-ground shooting of property/project presentation",
-            "Professional editing, captions, text animations, music & SFX",
-            "Branding, CTA, 9:16 format, 1 revision included"
+            "Real on-camera UGC creator — concept, hook, script & presentation",
+            "Authentic location or on-ground shoot showing product/property",
+            "Professional pacing, captions, text animations, music & sound design",
+            "Branding, clear call-to-action (CTA), 9:16 vertical format, 1 revision included"
           ]
         }
       ]
     },
     {
       number: 3,
-      id: "website",
-      title: "3. Real Estate Website",
+      id: "healthcare",
+      title: "3. Healthcare Management System",
       pricing: [
-        { label: "Setup:", value: "₹25,000 – ₹40,000 — depends on complexity & feature set" },
-        { label: "Included:", value: "3 years hosting + 1 year email hosting" }
+        { label: "Setup:", value: "₹40,000 (one-time complete system)" },
+        { label: "Deployment:", value: "Full web portal + admin & doctor dashboards" }
       ],
       sections: [
         {
-          heading: "Website Pages",
+          heading: "Core System Capabilities",
           features: [
-            "Home, About Us, Contact Us, FAQ, Testimonials, Blog/News (optional)",
-            "Properties, Property Details, Property Categories (Residential & Commercial)",
-            "Projects, Locations, Services, Privacy Policy, Terms & Conditions"
+            "Doctor & Specialist Profiles with dynamic availability schedules",
+            "Patient Appointment Booking System (online self-booking + reception desk)",
+            "Electronic Health Records (EHR) & complete patient consultation history",
+            "Automated WhatsApp & SMS appointment confirmations, reminders & follow-ups",
+            "Digital Prescription & Medical Billing / Invoice Generation",
+            "Role-Based Access: Admin, Receptionist, Doctor, and Patient access levels",
+            "Patient Queue Management & real-time daily appointment overview",
+            "Fast inquiry capture, callback requests, and hospital contact routing"
           ]
         },
         {
-          heading: "Property Listing System",
-          features: [
-            "Add / edit / delete properties with images, videos, price, and area",
-            "BHK, bedrooms, bathrooms, parking, property type & status",
-            "Amenities, location, Google Maps, floor plans, brochure, possession & developer details"
-          ]
-        },
-        {
-          heading: "Search, Filters & Property Detail Page",
-          features: [
-            "Search & filter by location, budget, property type, BHK, area, price, amenities, availability",
-            "Property gallery, overview, specifications, floor plan, nearby places & map",
-            "WhatsApp CTA, Call CTA, enquiry form, request callback, schedule site visit"
-          ]
-        },
-        {
-          heading: "Lead Generation & Site Visit Booking",
-          features: [
-            "Enquire Now, Get Price, Request Callback, WhatsApp, Call Now, Download Brochure",
-            "Full site visit flow — property & date/time selection, booking confirmation, rescheduling, cancellation, admin notification"
-          ]
-        },
-        {
-          heading: "Property Landing Pages",
-          pricing: [{ label: "Price:", value: "₹7,000 – ₹15,000 / page" }],
-          features: [
-            "High-converting standalone landing page per project/property",
-            "Gallery, pricing, amenities, location, floor plans, brochure download",
-            "Enquiry form, WhatsApp CTA, Call CTA, and site-visit CTA"
-          ]
-        },
-        {
-          heading: "Admin Panel & Lead Management",
-          features: [
-            "Admin login with property, lead, enquiry, site-visit, image & content management",
-            "Lead pipeline: New Lead → Contacted → Qualified → Site Visit → Follow-up → Negotiation → Closed/Lost"
-          ]
-        },
-        {
-          heading: "WhatsApp, SEO & Performance",
-          features: [
-            "WhatsApp integration, click-to-call, property-specific messages, contact forms & email notifications",
-            "SEO-friendly URLs, meta tags, sitemap, schema markup, Search Console & Analytics, Meta Pixel",
-            "Mobile optimization, image optimization, SSL, and deployment"
-          ]
-        },
-        {
-          heading: "Optional Add-ons",
-          features: [
-            "Property comparison, wishlist/favourites, user login, property alerts",
-            "EMI / investment calculator, multi-agent profiles, multi-location support",
-            "Blog/CMS, CRM integration, AI property assistant"
-          ]
+          heading: "Workflow Architecture",
+          text: "Patient Enquiry / Booking → Instant WhatsApp Confirmation → Queue Allocation → Doctor Consultation & Digital Prescription → Billing → Automated Follow-up Reminder"
         }
       ]
     },
     {
       number: 4,
-      id: "whatsapp-automation",
-      title: "4. WhatsApp Automation",
+      id: "website",
+      title: "4. Website Development (Basic & Advanced)",
       pricing: [
-        { label: "Setup:", value: "₹10,000 – ₹25,000" },
+        { label: "Basic Website:", value: "₹40,000 (one-time)" },
+        { label: "Advanced Website:", value: "₹90,000 (one-time)" },
+        { label: "Included:", value: "3 years hosting + 1 year custom email hosting" }
+      ],
+      sections: [
+        {
+          heading: "Basic Website (₹40,000)",
+          features: [
+            "Modern, mobile-responsive corporate / business website (Up to 6 core pages)",
+            "Home, About Us, Services / Listings, Contact Us, Testimonials & FAQ",
+            "Interactive property/service showcase with photo gallery and inquiry form",
+            "Click-to-WhatsApp, direct phone call button, and email notification on leads",
+            "3 years premium cloud hosting + 1 year custom business email included",
+            "SEO-ready structure, meta tags, Google Analytics & Meta Pixel integration"
+          ]
+        },
+        {
+          heading: "Advanced Website (₹90,000)",
+          features: [
+            "Full-scale custom portal architecture with advanced dynamic features",
+            "Multi-category filtering: Location, budget, amenities, BHK / product specifications",
+            "Interactive floor plans, virtual tours, downloadable brochures & price breakdown",
+            "Custom Admin Panel with property, user, and lead pipeline management",
+            "Site Visit & Calendar booking system with automated confirmation & reschedule",
+            "High-speed CDN performance optimization, schema markup & CRM webhook sync",
+            "Includes 3 years hosting, 1 year business email, SSL & priority technical support"
+          ]
+        }
+      ]
+    },
+    {
+      number: 5,
+      id: "landing-ads",
+      title: "5. Landing Page & Ads / Funnel",
+      pricing: [
+        { label: "Landing Page:", value: "₹10,000 / page" },
+        { label: "Ads & Funnel Setup:", value: "₹10,000 (one-time)" }
+      ],
+      sections: [
+        {
+          heading: "Standalone Project Landing Page (₹10,000)",
+          features: [
+            "High-converting single-page acquisition layout engineered specifically for ad traffic",
+            "Hero section with immediate value proposition, brochure download & booking CTA",
+            "Interactive photo/video gallery, floor plans, amenities, and location map",
+            "Sticky WhatsApp and Call CTAs with multi-step lead capture form",
+            "Ultra-fast loading speed (<1.5s) optimized for high mobile conversion rates"
+          ]
+        },
+        {
+          heading: "Ads Campaign & Acquisition Funnel Setup (₹10,000)",
+          features: [
+            "Meta (Facebook/Instagram) & Google Ads account audit & setup",
+            "Target audience research: demographic, high-intent interest & geo-fencing",
+            "Funnel mapping: Ad Creative → Landing Page → Lead Qualification → CRM / WhatsApp",
+            "Meta Conversion API, Pixel tracking, and Google Tag Manager event tracking",
+            "A/B testing configuration for headlines, hooks, and lead forms"
+          ]
+        }
+      ]
+    },
+    {
+      number: 6,
+      id: "whatsapp-automation",
+      title: "6. WhatsApp Lead Automation",
+      pricing: [
+        { label: "Setup:", value: "₹10,000 (one-time)" },
         { label: "Monthly:", value: "₹3,000 – ₹10,000 + API Charges" }
       ],
       sections: [
         {
           heading: "What's Included",
           features: [
-            "Instant lead response with automated welcome message",
-            "Lead qualification — budget, location, BHK, and property preference",
-            "Property details, recommendations, brochure & media delivery, pricing info",
-            "FAQ automation, automated follow-ups, and lead nurturing",
-            "Appointment & site visit booking, confirmation, reminders, rescheduling",
-            "Lead routing with sales-team notifications and human handoff",
-            "CRM integration and lead status updates"
+            "Instant lead response with automated greeting within 3 seconds of inquiry",
+            "Automated qualification questionnaire (budget, preference, timeline)",
+            "Automated delivery of property brochures, PDF pricing, and video links",
+            "Smart appointment / site visit scheduling and reminder sequence",
+            "Sales team alerts with instant lead summary notification",
+            "CRM synchronization and seamless human handoff when lead requests agent"
           ]
         },
         {
           heading: "Automation Flow",
-          text: "Lead Generated → Instant WhatsApp Reply → Requirement Collection → Lead Qualification → Property Recommendation → Brochure/Details → Follow-up → Site Visit Booking → Sales Team Handoff"
-        }
-      ]
-    },
-    {
-      number: 5,
-      id: "ai-ads",
-      title: "5. AI Ads",
-      sections: [
-        {
-          heading: "AI Ad Creative",
-          pricing: [{ label: "Price:", value: "₹7,000 for 3 videos (minimum order) — larger volumes quoted on request" }],
-          features: [
-            "Ad strategy, target audience angle, and creative concept",
-            "Scroll-stopping hook, ad script, AI visuals & voiceover, AI presenter (if required)",
-            "Professional editing, captions, text animations, music & SFX, branding & CTA",
-            "9:16 Meta Ads format, 1 revision included"
-          ]
-        },
-        {
-          heading: "Human UGC Ads",
-          pricing: [{ label: "Price:", value: "₹3,000 / video (minimum order: 2 videos)" }],
-          features: [
-            "Human UGC creator — concept, hook, script",
-            "Product/property presentation, shooting, and editing",
-            "Captions, text animations, music & SFX, branding, CTA, 9:16 format, 1 revision"
-          ]
+          text: "Lead Generated → Instant WhatsApp Greeting → Qualification Questions → Brochure Delivery → Appointment Booking → Sales Team Alert"
         }
       ]
     }
@@ -562,42 +579,42 @@ const proposalData = {
       {
         icon: "📢",
         title: "Ad Spend Excluded",
-        text: "Meta/Google ad spend is not included"
+        text: "Meta/Google ad spend is paid directly to advertising platforms and not included in service fees."
       },
       {
         icon: "💬",
         title: "WhatsApp API Charges",
-        text: "WhatsApp API charges are not included"
+        text: "Official WhatsApp Business API message charges are billed directly by Meta/provider."
       },
       {
         icon: "📞",
         title: "AI Calling Usage",
-        text: "AI Calling usage (₹7/minute) is billed separately based on actual call minutes"
+        text: "AI Calling usage (₹7/minute) is billed transparently based on actual completed call duration."
       },
       {
         icon: "🤖",
         title: "AI / LLM API Usage",
-        text: "AI/LLM API usage charges are not included"
+        text: "Third-party AI/LLM token usage is charged at actual cost or client API key."
       },
       {
         icon: "🌐",
         title: "Domain & Hosting Terms",
-        text: "Domain renewal after the included 3-year hosting period is charged separately"
+        text: "3-year hosting and 1-year business email are included. Domain registration or renewal is separate."
       },
       {
         icon: "✈️",
         title: "Creator Travel & Location",
-        text: "Creator travel/location charges may apply separately for UGC shoots"
+        text: "Travel/accommodation outside local area for on-ground shoots is billed at actual cost."
       },
       {
         icon: "🎞️",
         title: "Premium Stock Media",
-        text: "Premium stock footage/assets may be charged separately"
+        text: "Specialty licensed stock footage or premium architectural 3D renders are quoted separately."
       },
       {
         icon: "🔄",
         title: "Video Revisions Policy",
-        text: "Each video includes 1 revision — major changes or additional revisions may be charged separately"
+        text: "Each video includes 1 round of revisions. Major script changes after delivery are charged separately."
       }
     ]
   },
@@ -619,25 +636,31 @@ const shortFormVideos = [
 
 const clientWebsites = [
   {
-    title: "Prakhar Properties & Infra",
-    domain: "prakharproperties.com",
-    liveUrl: "https://prakharproperties.com",
-    category: "Real Estate Developer Portal",
-    url: "/portfolio_website_1.png"
+    title: "Tarz HMS",
+    domain: "hms.tarztech.com",
+    liveUrl: "http://hms.tarztech.com/",
+    category: "Healthcare Management System",
+    badge: "Live System",
+    description: "NABH-compliant hospital management software for OPD token queues, e-prescriptions, GST itemized billing, IPD bed wards, and multi-tenant clinical dashboards.",
+    tags: ["NABH Compliant", "OPD & IPD", "GST Billing", "Doctor EMR"]
   },
   {
-    title: "Shree Geeta Kunj Infra",
-    domain: "shreegeetakunjinfra.com",
-    liveUrl: "https://shreegeetakunjinfra.com",
-    category: "Township & Villa Launch Page",
-    url: "/portfolio_website_2.png"
+    title: "hmRide",
+    domain: "hmride.com",
+    liveUrl: "https://www.hmride.com/",
+    category: "Mobility & Carpooling Platform",
+    badge: "Production App",
+    description: "India's community-powered carpooling app featuring Aadhaar-verified travel, Women Only mode, live GPS location tracking, and route deviation alerts.",
+    tags: ["Aadhaar Verified", "Women-Only Mode", "Live GPS Tracking", "Corporate Circles"]
   },
   {
-    title: "Sobha Luxury Residences",
-    domain: "sobharealty.com",
-    liveUrl: "https://sobharealty.com",
-    category: "High-End Agency Platform",
-    url: "/portfolio_website_3.png"
+    title: "Tarz Technologies",
+    domain: "tarztech.com",
+    liveUrl: "https://www.tarztech.com/",
+    category: "Tech Agency & Custom Software",
+    badge: "Agency Platform",
+    description: "High-performance digital engineering platform building scalable custom web applications, mobile apps, business automations, and AI growth solutions.",
+    tags: ["Full-Stack Web", "Mobile Apps", "AI Automations", "Cloud Systems"]
   }
 ];
 
@@ -645,6 +668,7 @@ export default function OfferPage() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [showVideo, setShowVideo] = useState(false);
   const [modalVideoUrl, setModalVideoUrl] = useState("");
+  const [isPlayingVsl, setIsPlayingVsl] = useState(false);
   const [creativeFilter, setCreativeFilter] = useState("all");
   const [playingIndex, setPlayingIndex] = useState(null);
   const [activeServiceTab, setActiveServiceTab] = useState("ai-calling");
@@ -783,20 +807,20 @@ export default function OfferPage() {
         </div>
       </header>
 
-      {/* ORIGINAL HERO SECTION - EXACT AND UNTOUCHED */}
+      {/* HERO SECTION */}
       <section className="hero">
         <div className="container">
           <div className="hero-tag-wrap">
-            <span className="hero-label">AI REAL ESTATE ACQUISITION SYSTEM</span>
+            <span className="hero-label">AI ACQUISITION &amp; GROWTH SYSTEMS</span>
           </div>
 
           <h1>
-            Build your Real Estate <br />
-            <span className="brand-highlight">Startup with wstatemedia</span>
+            Build your High-Growth <br />
+            <span className="brand-highlight">Acquisition Machine with wstatemedia</span>
           </h1>
 
           <p className="subheadline">
-            Generate qualified property buyers automatically using AI UGC videos, high-converting acquisition funnels, and 24/7 SMS &amp; CRM lead qualification.
+            Generate qualified buyers, clients &amp; appointments automatically using AI UGC videos, high-converting websites &amp; funnels, and 24/7 AI calling &amp; WhatsApp systems.
           </p>
 
           {/* DUAL PILL BUTTONS */}
@@ -811,7 +835,7 @@ export default function OfferPage() {
 
           {/* TRUST BAR */}
           <div className="trust-bar">
-            <span className="trust-text">Trusted by <strong>50+ US Real Estate</strong> Agencies &amp; Developers</span>
+            <span className="trust-text">Trusted by <strong>50+ High-Growth</strong> Agencies, Developers &amp; Healthcare Leaders</span>
           </div>
 
           {/* BROWSER WINDOW VIDEO FRAME */}
@@ -824,18 +848,33 @@ export default function OfferPage() {
               </div>
               <div className="browser-url-bar">wstatemedia.com/vsl</div>
             </div>
-            <div className="vsl-thumbnail" onClick={() => openVideoInModal("https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=Compiled_bboouj")}>
-              <img
-                src="https://res.cloudinary.com/dobulag2p/image/upload/v1778540902/__I_know_Your_Problem_202605120355_srntis.jpg"
-                alt="Watch VSL Video"
-                className="vsl-cover"
-              />
-              <div className="vsl-play-btn">
-                <div className="vsl-play-circle">
-                  <div className="vsl-play-icon"></div>
+            {isPlayingVsl ? (
+              <div className="vsl-player-frame">
+                <iframe
+                  src="https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=Compiled_bboouj&autoplay=true&controls=true"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                  title="Proposal Demo Video"
+                  style={{ display: "block", border: 0, width: "100%", height: "100%" }}
+                />
+              </div>
+            ) : (
+              <div className="vsl-thumbnail" onClick={() => setIsPlayingVsl(true)}>
+                <img
+                  src="https://res.cloudinary.com/dobulag2p/image/upload/v1778540902/__I_know_Your_Problem_202605120355_srntis.jpg"
+                  alt="Watch VSL Video"
+                  className="vsl-cover"
+                />
+                <div className="vsl-play-btn">
+                  <div className="vsl-play-circle">
+                    <div className="vsl-play-icon"></div>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -879,72 +918,20 @@ export default function OfferPage() {
           <div className="marquee-item">COASTAL REALTY <span className="marquee-stat">CPL -41%</span> •</div>
           <div className="marquee-item">IRONGATE PROPERTIES <span className="marquee-stat">ROAS 5.6x</span> •</div>
           <div className="marquee-item">PINEHURST LUXURY <span className="marquee-stat">Bookings +212%</span> •</div>
-          <div className="marquee-item">APEX REAL ESTATE <span className="marquee-stat">ROAS 4.1x</span> •</div>
-          <div className="marquee-item">BRIGHTSMILE HOMES <span className="marquee-stat">CPA -38%</span> •</div>
+          <div className="marquee-item">APEX HEALTHCARE <span className="marquee-stat">Patients +180%</span> •</div>
+          <div className="marquee-item">BRIGHTSMILE CLINIC <span className="marquee-stat">CPA -38%</span> •</div>
           <div className="marquee-item">SUMMIT DEVELOPERS <span className="marquee-stat">CTR +156%</span> •</div>
           {/* continuous loop duplicate */}
           <div className="marquee-item">COASTAL REALTY <span className="marquee-stat">CPL -41%</span> •</div>
           <div className="marquee-item">IRONGATE PROPERTIES <span className="marquee-stat">ROAS 5.6x</span> •</div>
           <div className="marquee-item">PINEHURST LUXURY <span className="marquee-stat">Bookings +212%</span> •</div>
-          <div className="marquee-item">APEX REAL ESTATE <span className="marquee-stat">ROAS 4.1x</span> •</div>
-          <div className="marquee-item">BRIGHTSMILE HOMES <span className="marquee-stat">CPA -38%</span> •</div>
+          <div className="marquee-item">APEX HEALTHCARE <span className="marquee-stat">Patients +180%</span> •</div>
+          <div className="marquee-item">BRIGHTSMILE CLINIC <span className="marquee-stat">CPA -38%</span> •</div>
           <div className="marquee-item">SUMMIT DEVELOPERS <span className="marquee-stat">CTR +156%</span> •</div>
         </div>
       </div>
 
-      {/* SOCIAL PROOF SECTION */}
-      <section className="social-proof-section">
-        <div className="container">
-          <div className="section-title">
-            <div className="hero-label">— SOCIAL PROOF</div>
-            <h2>Real businesses. Real ROAS.</h2>
-            <p>Illustrative results based on typical client outcomes — ask us for full case studies on your call.</p>
-          </div>
-          <div className="social-proof-grid">
-            <div className="testimonial-card">
-              <div className="testimonial-stars">★★★★★</div>
-              <p className="testimonial-text">
-                "We went from 2 stale ads to 14 tested variations in our first two weeks. Cost per booked appointment dropped 38% and we finally know which offer actually converts."
-              </p>
-              <div className="testimonial-author">
-                <div className="author-avatar">MT</div>
-                <div>
-                  <div className="author-name">Marcus Tillman</div>
-                  <div className="author-role">Owner, Apex Real Estate — Dallas, TX</div>
-                </div>
-              </div>
-            </div>
 
-            <div className="testimonial-card">
-              <div className="testimonial-stars">★★★★★</div>
-              <p className="testimonial-text">
-                "I was skeptical about 'AI ads' looking cheap. They don't. Our hook rate is higher than the videos our last agency shot with real actors — at a third of the cost."
-              </p>
-              <div className="testimonial-author">
-                <div className="author-avatar">RA</div>
-                <div>
-                  <div className="author-name">Dr. Renee Ackerman</div>
-                  <div className="author-role">Founder, Coastal Realty — Miami, FL</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="testimonial-card">
-              <div className="testimonial-stars">★★★★★</div>
-              <p className="testimonial-text">
-                "We partner with wstatemedia across all 11 of our luxury development projects now. It's the only way we could 10x creative output without hiring an entire in-house media team."
-              </p>
-              <div className="testimonial-author">
-                <div className="author-avatar">JK</div>
-                <div>
-                  <div className="author-name">Jordan Kessler</div>
-                  <div className="author-role">Managing Director, Summit Growth Partners</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* PRICING SUMMARY SECTION */}
       <section id="pricing-summary">
@@ -984,7 +971,7 @@ export default function OfferPage() {
           <div className="section-title">
             <div className="hero-label">DETAILED SCOPE</div>
             <h2>Services Breakdown</h2>
-            <p>Comprehensive deliverables for each of the 5 modular services below.</p>
+            <p>Comprehensive deliverables for each of our core modular services below.</p>
           </div>
 
           {/* SERVICE NAVIGATION TABS */}
@@ -1089,41 +1076,46 @@ export default function OfferPage() {
       <section id="websites">
         <div className="container">
           <div className="section-title">
-            <div className="hero-label">CLIENT PORTFOLIO</div>
-            <h2>Websites We've Built</h2>
-            <p>High-converting real estate websites &amp; portals built for our clients.</p>
+            <div className="hero-label">FEATURED PLATFORMS</div>
+            <h2>Websites &amp; Systems We've Built</h2>
+            <p>Live, production-grade web systems, mobile platforms &amp; enterprise software.</p>
           </div>
 
-          <div className="website-portfolio-grid">
+          <div className="minimal-websites-grid">
             {clientWebsites.map((site, idx) => (
-              <div key={idx} className="website-card">
-                <div className="website-browser-frame">
-                  <div className="browser-header">
-                    <div className="browser-dots">
-                      <span className="browser-dot browser-dot--red"></span>
-                      <span className="browser-dot browser-dot--yellow"></span>
-                      <span className="browser-dot browser-dot--green"></span>
-                    </div>
-                    <div className="browser-url-bar">{site.domain}</div>
-                  </div>
-                  <div className="website-preview-image-wrap">
-                    <img src={site.url} alt={site.title} className="website-preview-img" />
-                    <div className="website-hover-overlay">
-                      <a href={site.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-black-pill" style={{ padding: "10px 20px", fontSize: "13px" }}>
-                        Visit Live Site ↗
-                      </a>
-                    </div>
-                  </div>
+              <a
+                key={idx}
+                href={site.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="minimal-website-card"
+              >
+                <div className="minimal-card-top">
+                  <span className="minimal-card-category">{site.category}</span>
+                  <span className="minimal-card-badge">
+                    <span className="live-dot"></span> {site.badge}
+                  </span>
                 </div>
 
-                <div className="website-card-body">
-                  <span className="website-category">{site.category}</span>
-                  <h3 className="website-card-title">{site.title}</h3>
-                  <a href={site.liveUrl} target="_blank" rel="noopener noreferrer" className="website-link">
-                    Visit {site.domain} →
-                  </a>
+                <div className="minimal-card-main">
+                  <h3 className="minimal-card-title">{site.title}</h3>
+                  <div className="minimal-card-domain">
+                    {site.domain} <span className="arrow-icon">↗</span>
+                  </div>
+                  <p className="minimal-card-desc">{site.description}</p>
                 </div>
-              </div>
+
+                <div className="minimal-card-tags">
+                  {site.tags.map((tag, tIdx) => (
+                    <span key={tIdx} className="minimal-tag">{tag}</span>
+                  ))}
+                </div>
+
+                <div className="minimal-card-action">
+                  <span>Visit Live Platform</span>
+                  <span className="minimal-action-btn">↗</span>
+                </div>
+              </a>
             ))}
           </div>
         </div>
@@ -1134,7 +1126,7 @@ export default function OfferPage() {
         <div className="container">
           <div className="section-title">
             <h2>SHORT FORM STYLES</h2>
-            <p>High-converting short form content tailored for real estate.</p>
+            <p>High-converting short form UGC and storytelling content tailored to stop scrolling.</p>
           </div>
 
           <div className="creative-tabs">
@@ -1201,8 +1193,8 @@ export default function OfferPage() {
         <div className="container">
           <div className="section-title">
             <div className="hero-label">— PRICING &amp; PACKAGES</div>
-            <h2>Simple plans. No production markups.</h2>
-            <p>Choose between our fixed monthly growth plans or custom build your exact package with our live calculator.</p>
+            <h2>Simple plans. Transparent pricing.</h2>
+            <p>Choose between our complete fixed acquisition plans or custom build your exact package with our live calculator.</p>
           </div>
 
           <div className="pricing-mode-toggle">
@@ -1257,7 +1249,7 @@ export default function OfferPage() {
                 <div>
                   <div className="guarantee-title">30-day performance guarantee</div>
                   <div className="guarantee-desc">
-                    If we don't deliver 10 fully tested ad variations within your first 30 days, you don't pay for that month. That's how confident we are in the process.
+                    If we don't deliver tested ad variations and launch your pipeline within your first 30 days, we'll keep iterating at no extra cost. That's how confident we are in our execution.
                   </div>
                 </div>
               </div>
@@ -1266,7 +1258,7 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* ORIGINAL FAQ SECTION */}
+      {/* FAQ SECTION */}
       <section>
         <div className="container">
           <div className="section-title">
@@ -1297,7 +1289,7 @@ export default function OfferPage() {
         <div className="container" style={{ textAlign: "center" }}>
           <div className="section-title">
             <h2>Stop Posting. Start Converting.</h2>
-            <p>Build your high-converting real estate acquisition machine today.</p>
+            <p>Build your high-converting client acquisition machine today.</p>
             <p style={{ marginTop: "12px", fontSize: "15px", fontWeight: "700" }}>
               Direct Contact: <a href="mailto:wstatemedia@gmail.com" style={{ color: "var(--light-blue-dark)", textDecoration: "underline" }}>wstatemedia@gmail.com</a>
             </p>
@@ -1309,26 +1301,26 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* ORIGINAL FOOTER */}
+      {/* FOOTER */}
       <footer className="offer-footer">
         <div className="container">
           <div className="offer-footer-grid">
             <div>
               <div className="offer-footer-logo">wstatemedia</div>
               <p className="offer-footer-tagline">
-                AI-powered real estate growth system.<br />
-                Creatives. Funnels. Automation. Ads.
+                AI-powered growth &amp; acquisition systems.<br />
+                Creatives. Funnels. Automation. Systems.
               </p>
             </div>
             <div>
               <div className="offer-footer-heading">Services</div>
               <ul className="offer-footer-links">
-                <li>Cinematic Real Estate Video Production</li>
-                <li>AI UGC Videos</li>
-                <li>Acquisition Funnels</li>
-                <li>SMS &amp; CRM Automation</li>
-                <li>AI Real Estate Chatbot</li>
-                <li>Meta &amp; Google Ads</li>
+                <li>AI Videos (UGC &amp; Storytelling Ads)</li>
+                <li>Human Videos (UGC &amp; Real Shoot)</li>
+                <li>Healthcare Management System</li>
+                <li>Websites (Basic &amp; Advanced)</li>
+                <li>Landing Pages &amp; Ads Funnel</li>
+                <li>AI Calling &amp; WhatsApp Automation</li>
               </ul>
             </div>
             <div>
