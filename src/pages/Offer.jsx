@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Icon from "../components/Icons.jsx";
 import "./OfferPage.css";
 
 const faqs = [
@@ -187,7 +188,20 @@ const fixedPlans = [
 
 const CALC_SHEET_URL = "https://script.google.com/macros/s/AKfycbxABRNpYSU6BJHLRJY1vE0ohMlCGNLjq6OuyECJEEZplZ4KfGebKe54_Ljrg-kJZRZy2w/exec";
 
-function PricingCalculator({ currency = "USD", setCurrency }) {
+// Region-aware pricing: visitors in India see INR, everyone else sees USD.
+// Reads only signals the browser already exposes (timezone, locale) — no geo-IP
+// request, no extra dependency, and it resolves before first paint.
+function detectCurrency() {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    if (/Calcutta|Kolkata/i.test(tz)) return "INR";
+    const tags = [navigator.language, ...(navigator.languages || [])];
+    if (tags.some((t) => /-IN\b/i.test(t || ""))) return "INR";
+  } catch (_) { }
+  return "USD";
+}
+
+function PricingCalculator({ currency = "USD" }) {
   const [selected, setSelected] = useState({});
   const [qty, setQty] = useState({ ai_videos: 4, ugc_videos: 2, landing: 1 });
   const [name, setName] = useState("");
@@ -277,25 +291,6 @@ function PricingCalculator({ currency = "USD", setCurrency }) {
             {count >= 2 && <span className="calc-discount-note"> Bundle discount applied</span>}
           </p>
         </div>
-        {setCurrency && (
-          <div className="currency-selector">
-            <span className="currency-label">Currency:</span>
-            <button
-              type="button"
-              className={`currency-pill ${currency === "USD" ? "active" : ""}`}
-              onClick={() => setCurrency("USD")}
-            >
-              🇺🇸 USD ($)
-            </button>
-            <button
-              type="button"
-              className={`currency-pill ${currency === "INR" ? "active" : ""}`}
-              onClick={() => setCurrency("INR")}
-            >
-              🇮🇳 INR (₹)
-            </button>
-          </div>
-        )}
       </div>
 
       <div className="calc-grid">
@@ -634,42 +629,42 @@ const proposalData = {
     heading: "Important Commercial Terms",
     items: [
       {
-        icon: "📢",
+        icon: "megaphone",
         title: "Ad Spend Excluded",
         text: "Meta/Google ad spend is paid directly to advertising platforms and not included in service fees."
       },
       {
-        icon: "💬",
+        icon: "message",
         title: "WhatsApp API Charges",
         text: "Official WhatsApp Business API message charges are billed directly by Meta/provider."
       },
       {
-        icon: "📞",
+        icon: "phone",
         title: "AI Calling Usage",
         text: "AI Calling usage ($0.10/min USD / ₹7/min INR) is billed transparently based on actual completed call duration."
       },
       {
-        icon: "🤖",
+        icon: "cpu",
         title: "AI / LLM API Usage",
         text: "Third-party AI/LLM token usage is charged at actual cost or client API key."
       },
       {
-        icon: "🌐",
+        icon: "globe",
         title: "Domain & Hosting Terms",
         text: "3-year hosting and 1-year business email are included. Domain registration or renewal is separate."
       },
       {
-        icon: "✈️",
+        icon: "plane",
         title: "Creator Travel & Location",
         text: "Travel/accommodation outside local area for on-ground shoots is billed at actual cost."
       },
       {
-        icon: "🎞️",
+        icon: "film",
         title: "Premium Stock Media",
         text: "Specialty licensed stock footage or premium architectural 3D renders are quoted separately."
       },
       {
-        icon: "🔄",
+        icon: "refresh",
         title: "Video Revisions Policy",
         text: "Each video includes 1 round of revisions. Major script changes after delivery are charged separately."
       }
@@ -722,7 +717,8 @@ const clientWebsites = [
 ];
 
 export default function OfferPage() {
-  const [currency, setCurrency] = useState("USD");
+  const [currency] = useState(detectCurrency);
+  const priceIdx = currency === "USD" ? 1 : 2;
   const [activeIndex, setActiveIndex] = useState(null);
   const [showVideo, setShowVideo] = useState(false);
   const [modalVideoUrl, setModalVideoUrl] = useState("");
@@ -781,7 +777,7 @@ export default function OfferPage() {
 
       window.Cal.ns["30min"]("ui", {
         "cssVarsPerTheme": {
-          "light": { "cal-brand": "#167bff" },
+          "light": { "cal-brand": "#151515" },
           "dark": { "cal-brand": "#ffffff" }
         },
         "hideEventTypeDetails": false,
@@ -857,22 +853,6 @@ export default function OfferPage() {
             wstatemedia
           </div>
           <div className="navbar-actions">
-            <div className="nav-currency-toggle">
-              <button
-                type="button"
-                className={`nav-currency-btn ${currency === "USD" ? "active" : ""}`}
-                onClick={() => setCurrency("USD")}
-              >
-                USD ($)
-              </button>
-              <button
-                type="button"
-                className={`nav-currency-btn ${currency === "INR" ? "active" : ""}`}
-                onClick={() => setCurrency("INR")}
-              >
-                INR (₹)
-              </button>
-            </div>
             <ul className="navbar-links">
               <li><a href="#calculator" className="navbar-link">Calculator</a></li>
             </ul>
@@ -884,67 +864,73 @@ export default function OfferPage() {
       {/* HERO SECTION */}
       <section className="hero">
         <div className="container">
-          <div className="hero-tag-wrap">
-            <span className="hero-label">AI ACQUISITION &amp; GROWTH SYSTEMS</span>
-          </div>
+          <div className="hero-grid">
+            <div className="hero-copy">
+              <div className="hero-tag-wrap">
+                <span className="hero-label">AI ACQUISITION &amp; GROWTH SYSTEMS</span>
+              </div>
 
-          <h1>
-            Build your High-Growth <br />
-            <span className="brand-highlight">Acquisition Machine with wstatemedia</span>
-          </h1>
+              <h1>
+                Build your High-Growth <br />
+                <span className="brand-highlight">Acquisition Machine with wstatemedia</span>
+              </h1>
 
-          {/* DUAL PILL BUTTONS */}
-          <div className="hero-cta-group">
-            <a href="#cta" className="btn-black-pill">
-              Let's Explore →
-            </a>
-            <a href="#calculator" className="btn-outline-pill">
-              Contact Us
-            </a>
+              {/* DUAL PILL BUTTONS */}
+              <div className="hero-cta-group">
+                <a href="#cta" className="btn-black-pill">
+                  Let's Explore →
+                </a>
+                <a href="#calculator" className="btn-outline-pill">
+                  Contact Us
+                </a>
+              </div>
+            </div>
+
+            {/* BROWSER WINDOW VIDEO FRAME */}
+            <div className="hero-visual">
+              <div className="browser-video-frame">
+                <div className="browser-header">
+                  <div className="browser-dots">
+                    <span className="browser-dot browser-dot--red"></span>
+                    <span className="browser-dot browser-dot--yellow"></span>
+                    <span className="browser-dot browser-dot--green"></span>
+                  </div>
+                  <div className="browser-url-bar">wstatemedia.com/vsl</div>
+                </div>
+                {isPlayingVsl ? (
+                  <div className="vsl-player-frame">
+                    <iframe
+                      src="https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=Compiled_bboouj&autoplay=true&controls=true"
+                      width="100%"
+                      height="100%"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                      allowFullScreen
+                      title="Proposal Demo Video"
+                      style={{ display: "block", border: 0, width: "100%", height: "100%" }}
+                    />
+                  </div>
+                ) : (
+                  <div className="vsl-thumbnail" onClick={() => setIsPlayingVsl(true)}>
+                    <img
+                      src="https://res.cloudinary.com/dobulag2p/image/upload/v1778540902/__I_know_Your_Problem_202605120355_srntis.jpg"
+                      alt="Watch VSL Video"
+                      className="vsl-cover"
+                    />
+                    <div className="vsl-play-btn">
+                      <div className="vsl-play-circle">
+                        <div className="vsl-play-icon"></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* TRUST BAR */}
           <div className="trust-bar">
             <span className="trust-text">Trusted by <strong>50+ High-Growth</strong> Agencies, Developers &amp; Healthcare Leaders</span>
-          </div>
-
-          {/* BROWSER WINDOW VIDEO FRAME */}
-          <div className="browser-video-frame">
-            <div className="browser-header">
-              <div className="browser-dots">
-                <span className="browser-dot browser-dot--red"></span>
-                <span className="browser-dot browser-dot--yellow"></span>
-                <span className="browser-dot browser-dot--green"></span>
-              </div>
-              <div className="browser-url-bar">wstatemedia.com/vsl</div>
-            </div>
-            {isPlayingVsl ? (
-              <div className="vsl-player-frame">
-                <iframe
-                  src="https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=Compiled_bboouj&autoplay=true&controls=true"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                  title="Proposal Demo Video"
-                  style={{ display: "block", border: 0, width: "100%", height: "100%" }}
-                />
-              </div>
-            ) : (
-              <div className="vsl-thumbnail" onClick={() => setIsPlayingVsl(true)}>
-                <img
-                  src="https://res.cloudinary.com/dobulag2p/image/upload/v1778540902/__I_know_Your_Problem_202605120355_srntis.jpg"
-                  alt="Watch VSL Video"
-                  className="vsl-cover"
-                />
-                <div className="vsl-play-btn">
-                  <div className="vsl-play-circle">
-                    <div className="vsl-play-icon"></div>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>
@@ -1017,17 +1003,16 @@ export default function OfferPage() {
             <table className="summary-table">
               <thead>
                 <tr>
-                  {proposalData.pricingSummary.columns.map((col, idx) => (
-                    <th key={idx}>{col}</th>
-                  ))}
+                  <th>{proposalData.pricingSummary.columns[0]}</th>
+                  <th>{proposalData.pricingSummary.columns[priceIdx]}</th>
+                  <th>{proposalData.pricingSummary.columns[3]}</th>
                 </tr>
               </thead>
               <tbody>
                 {proposalData.pricingSummary.rows.map((row, idx) => (
                   <tr key={idx}>
                     <td><strong>{row[0]}</strong></td>
-                    <td><span className="price-tag--usd">{row[1]}</span></td>
-                    <td><span className="price-tag--inr">{row[2]}</span></td>
+                    <td><span className={currency === "USD" ? "price-tag--usd" : "price-tag--inr"}>{row[priceIdx]}</span></td>
                     <td><span className="usage-tag">{row[3]}</span></td>
                   </tr>
                 ))}
@@ -1047,13 +1032,9 @@ export default function OfferPage() {
 
                 {/* PART 2: PRICING COMPARTMENTS */}
                 <div className="bento-pricing-part">
-                  <div className="bento-rate-box bento-rate-box--usd">
-                    <span className="bento-currency-label">USD ($)</span>
-                    <span className="bento-rate-value">{row[1]}</span>
-                  </div>
-                  <div className="bento-rate-box bento-rate-box--inr">
-                    <span className="bento-currency-label">INR (₹)</span>
-                    <span className="bento-rate-value">{row[2]}</span>
+                  <div className={`bento-rate-box bento-rate-box--${currency === "USD" ? "usd" : "inr"}`}>
+                    <span className="bento-currency-label">{currency === "USD" ? "USD ($)" : "INR (₹)"}</span>
+                    <span className="bento-rate-value">{row[priceIdx]}</span>
                   </div>
                 </div>
 
@@ -1115,10 +1096,10 @@ export default function OfferPage() {
                   )}
                 </div>
 
-                <div className="service-details-container" style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+                <div className="service-details-container" style={{ display: "flex", flexDirection: "column", gap: "var(--space-6)" }}>
                   {svc.sections.map((sec, idx) => (
                     <div className="video-pkg-box" key={idx}>
-                      <h4 style={{ fontSize: "18px", fontWeight: "800", marginBottom: "10px", color: "var(--dark)" }}>
+                      <h4 style={{ fontSize: "var(--text-lg)", fontWeight: 500, letterSpacing: "var(--tracking-tight)", marginBottom: "var(--space-4)", color: "var(--fg)" }}>
                         {sec.heading}
                       </h4>
 
@@ -1285,7 +1266,7 @@ export default function OfferPage() {
           <div className="terms-grid">
             {proposalData.commercialTerms.items.map((term, idx) => (
               <div className="term-card" key={idx}>
-                <div className="term-icon">{term.icon}</div>
+                <div className="term-icon"><Icon name={term.icon} /></div>
                 <div className="term-title">{term.title}</div>
                 <p>{term.text}</p>
               </div>
@@ -1319,29 +1300,11 @@ export default function OfferPage() {
           </div>
 
           {pricingMode === 'calc' && (
-            <PricingCalculator currency={currency} setCurrency={setCurrency} />
+            <PricingCalculator currency={currency} />
           )}
 
           {pricingMode === 'plans' && (
             <div>
-              <div className="currency-selector" style={{ margin: "0 auto 28px", display: "flex", width: "fit-content" }}>
-                <span className="currency-label">Currency:</span>
-                <button
-                  type="button"
-                  className={`currency-pill ${currency === "USD" ? "active" : ""}`}
-                  onClick={() => setCurrency("USD")}
-                >
-                  🇺🇸 USD ($)
-                </button>
-                <button
-                  type="button"
-                  className={`currency-pill ${currency === "INR" ? "active" : ""}`}
-                  onClick={() => setCurrency("INR")}
-                >
-                  🇮🇳 INR (₹)
-                </button>
-              </div>
-
               <div className="plans-grid">
                 {fixedPlans.map((plan) => (
                   <div
@@ -1371,7 +1334,7 @@ export default function OfferPage() {
               </div>
 
               <div className="plan-guarantee">
-                <div className="guarantee-icon">🛡️</div>
+                <div className="guarantee-icon"><Icon name="shieldCheck" /></div>
                 <div>
                   <div className="guarantee-title">30-day performance guarantee</div>
                   <div className="guarantee-desc">
@@ -1416,8 +1379,8 @@ export default function OfferPage() {
           <div className="section-title">
             <h2>Stop Posting. Start Converting.</h2>
             <p>Build your high-converting client acquisition machine today.</p>
-            <p style={{ marginTop: "12px", fontSize: "15px", fontWeight: "700" }}>
-              Direct Contact: <a href="mailto:wstatemedia@gmail.com" style={{ color: "var(--light-blue-dark)", textDecoration: "underline" }}>wstatemedia@gmail.com</a>
+            <p style={{ marginTop: "var(--space-4)", fontSize: "15px", fontWeight: 400 }}>
+              Direct Contact: <a href="mailto:wstatemedia@gmail.com" style={{ color: "var(--on-dark)", textDecoration: "underline", textUnderlineOffset: "3px" }}>wstatemedia@gmail.com</a>
             </p>
           </div>
 
