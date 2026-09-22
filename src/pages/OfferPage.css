@@ -359,6 +359,8 @@ html { scroll-behavior: smooth; }
 }
 
 .navbar-container {
+  position: relative;
+  z-index: 2; /* keeps the bar above the drawer and its scrim */
   width: 100%;
   max-width: var(--container);
   margin: 0 auto;
@@ -420,6 +422,127 @@ html { scroll-behavior: smooth; }
   display: flex;
   align-items: center;
   gap: var(--space-5);
+}
+
+/* ---- Mobile drawer -----------------------------------------------------
+   Hidden above the 900px breakpoint; the media query below flips the bar
+   over to the toggle and reveals these. */
+
+.navbar-toggle {
+  display: none;
+  position: relative;
+  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+
+.navbar-toggle:hover { background: var(--secondary); }
+.navbar-toggle--open { background: var(--secondary); border-color: var(--border-strong); }
+
+.navbar-toggle-bar {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--fg);
+  transition: transform var(--dur) var(--ease);
+}
+
+/* Bar centres sit 6.5px apart (5px gap + 1.5px stroke), so each travels
+   half that to meet in the middle as an X. */
+.navbar-toggle--open .navbar-toggle-bar:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.navbar-toggle--open .navbar-toggle-bar:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+.navbar-drawer {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: var(--space-2) var(--gutter) var(--space-5);
+  /* Opaque, not translucent: nesting a backdrop-filter inside the bar's own
+     filtered layer samples an already-isolated backdrop, so the page beneath
+     bleeds through instead of blurring. */
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity var(--dur) var(--ease),
+              transform var(--dur) var(--ease),
+              visibility var(--dur) var(--ease);
+}
+
+.navbar-drawer--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navbar-drawer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-drawer-links li + li { border-top: 1px solid var(--border); }
+
+.navbar-drawer-link {
+  display: block;
+  padding: 15px 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.offer-page .navbar-drawer-btn {
+  display: flex;
+  width: 100%;
+  margin-top: var(--space-4);
+  padding: 15px 22px;
+}
+
+/* Starts below the bar rather than covering it — the bar's tinted background
+   paints beneath its own contents, so a full-viewport scrim would grey it out. */
+.navbar-scrim {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 0;
+  background: rgba(21, 21, 21, 0.28);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur) var(--ease),
+              visibility var(--dur) var(--ease);
+}
+
+.navbar-scrim--open {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* =========================================================================
@@ -2442,18 +2565,20 @@ html { scroll-behavior: smooth; }
     --section-y-tight: 64px;
   }
 
+  /* Bar collapses to logo + toggle; every link moves into the drawer. */
   .navbar-container {
-    height: auto;
-    min-height: 64px;
-    flex-wrap: wrap;
-    gap: var(--space-4) var(--space-5);
-    padding-top: var(--space-3);
-    padding-bottom: var(--space-3);
+    height: 64px;
+    flex-wrap: nowrap;
+    gap: var(--space-4);
   }
 
   .navbar-logo { order: -1; flex: 0 0 auto; margin-right: auto; }
-  .navbar-actions { margin-left: 0; order: 0; gap: var(--space-4); }
-  .navbar-links { gap: var(--space-5); }
+  .navbar-container > .navbar-links,
+  .navbar-actions { display: none; }
+
+  .navbar-toggle { display: flex; }
+  .navbar-drawer { display: block; }
+  .navbar-scrim { display: block; }
 
   .hero-grid {
     grid-template-columns: 1fr;
@@ -2489,17 +2614,7 @@ html { scroll-behavior: smooth; }
 
   .bg-grid-glow-container { display: none; }
 
-  .navbar-container {
-    flex-wrap: nowrap;
-    gap: var(--space-4);
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .navbar-container::-webkit-scrollbar { display: none; }
-  .navbar-container > .navbar-links { flex-shrink: 0; }
-  .navbar-actions { flex-shrink: 0; }
-  .navbar-btn { padding: 11px 16px; }
+  .navbar-container { height: 60px; }
 
   .hero { padding-top: 56px; }
 

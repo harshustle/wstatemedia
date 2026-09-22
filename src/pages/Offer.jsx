@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 import Icon from "../components/Icons.jsx";
 import "./OfferPage.css";
 
+/* Single source of truth for the nav — the bar splits these across the two
+ * desktop clusters, the drawer stacks all of them. */
+const navLinks = [
+  { href: "#pricing-summary", label: "Pricing Summary" },
+  { href: "#services", label: "Services" },
+  { href: "#calculator", label: "Calculator" },
+];
+
 const faqs = [
   {
     q: "Do you run Meta and Google ad campaigns for real estate & businesses?",
@@ -727,12 +735,33 @@ export default function OfferPage() {
   const [playingIndex, setPlayingIndex] = useState(null);
   const [activeServiceTab, setActiveServiceTab] = useState("ai-calling");
   const [pricingMode, setPricingMode] = useState("calc");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleKey = (e) => { if (e.key === "Escape") setShowVideo(false); };
+    const handleKey = (e) => {
+      if (e.key !== "Escape") return;
+      setShowVideo(false);
+      setMenuOpen(false);
+    };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
+
+  /* Drawer is a mobile-only affordance: lock the page behind it, and drop it
+   * if the viewport grows past the breakpoint that hides the toggle. */
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const handleResize = () => {
+      if (window.innerWidth > 900) setMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     (function (C, A, L) {
@@ -846,19 +875,71 @@ export default function OfferPage() {
       <header className="navbar-wrap">
         <div className="navbar-container">
           <ul className="navbar-links">
-            <li><a href="#pricing-summary" className="navbar-link">Pricing Summary</a></li>
-            <li><a href="#services" className="navbar-link">Services</a></li>
+            {navLinks.slice(0, 2).map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="navbar-link">{link.label}</a>
+              </li>
+            ))}
           </ul>
           <div className="navbar-logo">
             wstatemedia
           </div>
           <div className="navbar-actions">
             <ul className="navbar-links">
-              <li><a href="#calculator" className="navbar-link">Calculator</a></li>
+              {navLinks.slice(2).map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="navbar-link">{link.label}</a>
+                </li>
+              ))}
             </ul>
             <a href="#cta" className="navbar-btn">Contact Us</a>
           </div>
+
+          <button
+            type="button"
+            className={`navbar-toggle${menuOpen ? " navbar-toggle--open" : ""}`}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="navbar-drawer"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span className="navbar-toggle-bar" />
+            <span className="navbar-toggle-bar" />
+          </button>
         </div>
+
+        <nav
+          id="navbar-drawer"
+          className={`navbar-drawer${menuOpen ? " navbar-drawer--open" : ""}`}
+          aria-label="Mobile"
+        >
+          <ul className="navbar-drawer-links">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="navbar-drawer-link"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#cta"
+            className="navbar-btn navbar-drawer-btn"
+            onClick={() => setMenuOpen(false)}
+          >
+            Contact Us
+          </a>
+        </nav>
+
+        <div
+          className={`navbar-scrim${menuOpen ? " navbar-scrim--open" : ""}`}
+          onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
+        />
       </header>
 
       {/* HERO SECTION */}
