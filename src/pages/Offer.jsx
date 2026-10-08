@@ -20,30 +20,12 @@ const faqs = [
     a: "Absolutely. We build high-converting acquisition funnels with interactive sections, virtual media, clear pricing transparency, and instant booking/consultation CTAs.",
   },
   {
-    q: "What is included in the Healthcare Management System?",
-    a: "A full doctor and clinic appointment booking system, patient electronic records, automated WhatsApp & SMS reminder alerts, prescription/billing management, and staff access control.",
-  },
-  {
-    q: "Do you provide AI lead qualification & calling automation?",
-    a: "Yes. We configure conversational AI calling agents (inbound & outbound @ ₹7/min) and 24/7 WhatsApp chatbots that pre-qualify budget, timeline, and requirements before human handoff.",
-  },
-  {
     q: "Who is this for?",
-    a: "Real estate developers, agencies, brokers, doctors, clinics, hospital networks, service businesses, and high-growth brands seeking automated client acquisition.",
+    a: "Real estate developers, agencies, brokers, service businesses, and high-growth brands that need conversion-focused video creatives and acquisition funnels.",
   },
 ];
 
 const calcServices = [
-  {
-    id: "ai_calling",
-    label: "AI Calling System Setup & Agent Creation",
-    unitPriceINR: 10000,
-    unitPriceUSD: 120,
-    unit: null,
-    hasQty: false,
-    noteINR: "Setup + Agent creation (₹10,000). Usage billed separately @ ₹7 / min.",
-    noteUSD: "Setup + Agent creation ($120). Usage billed separately @ $0.10 / min."
-  },
   {
     id: "ai_videos",
     label: "AI Videos (UGC / Storytelling Ads)",
@@ -71,36 +53,6 @@ const calcServices = [
     noteUSD: "Real UGC creator on-ground shoot, script presentation, editing, branding & 9:16 format."
   },
   {
-    id: "healthcare",
-    label: "Healthcare Management System",
-    unitPriceINR: 40000,
-    unitPriceUSD: 500,
-    unit: null,
-    hasQty: false,
-    noteINR: "Clinic/hospital portal: doctor scheduling, patient records, WhatsApp/SMS alerts & billing system.",
-    noteUSD: "Clinic/hospital portal: doctor scheduling, patient records, WhatsApp/SMS alerts & billing system."
-  },
-  {
-    id: "website_basic",
-    label: "Website Setup — Basic",
-    unitPriceINR: 40000,
-    unitPriceUSD: 500,
-    unit: null,
-    hasQty: false,
-    noteINR: "Includes 3-Yr Hosting + 1-Yr Email, modern responsive design, listing/catalog & inquiry capture.",
-    noteUSD: "Includes 3-Yr Hosting + 1-Yr Email, modern responsive design, listing/catalog & inquiry capture."
-  },
-  {
-    id: "website_advance",
-    label: "Website Setup — Advanced",
-    unitPriceINR: 90000,
-    unitPriceUSD: 1100,
-    unit: null,
-    hasQty: false,
-    noteINR: "High-end custom portal, advanced filters, dynamic CMS, CRM integration & multi-tier flow.",
-    noteUSD: "High-end custom portal, advanced filters, dynamic CMS, CRM integration & multi-tier flow."
-  },
-  {
     id: "landing",
     label: "Standalone Project Landing Page",
     unitPriceINR: 10000,
@@ -122,75 +74,6 @@ const calcServices = [
     hasQty: false,
     noteINR: "Targeted Meta & Google ads strategy, high-converting funnel mapping & conversion tracking.",
     noteUSD: "Targeted Meta & Google ads strategy, high-converting funnel mapping & conversion tracking."
-  },
-  {
-    id: "whatsapp",
-    label: "WhatsApp Lead Automation Setup",
-    unitPriceINR: 10000,
-    unitPriceUSD: 120,
-    unit: null,
-    hasQty: false,
-    noteINR: "Instant welcome reply, requirement collection, automated qualification & appointment routing.",
-    noteUSD: "Instant welcome reply, requirement collection, automated qualification & appointment routing."
-  }
-];
-
-const fixedPlans = [
-  {
-    name: "Starter Package",
-    desc: "For individual realtors, clinics & emerging brands getting started with digital acquisition.",
-    priceINR: "₹45,000",
-    priceUSD: "$550",
-    period: "one-time",
-    billedINR: "Includes Basic Website, 4 AI Videos & WhatsApp Lead Setup",
-    billedUSD: "Includes Basic Website, 4 AI Videos & WhatsApp Lead Setup",
-    popular: false,
-    btnText: "Choose Starter",
-    features: [
-      "Modern Website (Includes 3-yr hosting)",
-      "4 AI UGC / Storytelling Ads (9:16 format)",
-      "WhatsApp Lead Automation Setup",
-      "AI Calling System Integration",
-      "Lead Management & Admin Panel"
-    ]
-  },
-  {
-    name: "Growth Acquisition Package",
-    desc: "Complete digital & AI acquisition system built to scale qualified leads & appointments.",
-    priceINR: "₹85,000",
-    priceUSD: "$1,050",
-    period: "one-time",
-    billedINR: "Best value • Full connected lead pipeline",
-    billedUSD: "Best value • Full connected lead pipeline",
-    popular: true,
-    btnText: "Book Strategy Call",
-    features: [
-      "Advanced Web Portal & Custom Interactive Filters",
-      "8 AI Storytelling Videos + 2 Human UGC Videos",
-      "Landing Page & Ads Funnel Architecture",
-      "AI Calling System Setup + Agent Creation",
-      "WhatsApp Nurturing & Appointment Automation",
-      "Dedicated Onboarding & Growth Strategy"
-    ]
-  },
-  {
-    name: "Enterprise & Healthcare Suite",
-    desc: "For hospital chains, luxury developers & enterprises scaling multi-channel infrastructure.",
-    priceINR: "₹1,20,000+",
-    priceUSD: "$1,500+",
-    period: "one-time / custom",
-    billedINR: "Tailored scope for high-volume operations",
-    billedUSD: "Tailored scope for high-volume operations",
-    popular: false,
-    btnText: "Talk to Sales",
-    features: [
-      "Full Healthcare Management System / Advanced Portal",
-      "Multiple Standalone Project Landing Pages",
-      "12+ AI Videos & Human UGC Series",
-      "Multi-Agent AI Calling & 24/7 Automated Infrastructure",
-      "Custom CRM/EHR Integration & Priority Queue",
-      "Retainer Growth Support & Campaign Management"
-    ]
   }
 ];
 
@@ -219,15 +102,7 @@ function PricingCalculator({ currency = "USD" }) {
 
   const toggle = (id) => {
     setSelected(prev => {
-      const next = { ...prev, [id]: !prev[id] };
-      // Keep Basic and Advanced website tiers cleanly selectable
-      if (id === "website_basic" && next.website_basic) {
-        next.website_advance = false;
-      }
-      if (id === "website_advance" && next.website_advance) {
-        next.website_basic = false;
-      }
-      return next;
+      return { ...prev, [id]: !prev[id] };
     });
   };
 
@@ -423,53 +298,24 @@ const proposalData = {
   },
   overview: {
     heading: "Overview",
-    text: "This proposal outlines a complete suite of digital and AI-powered services built for real estate developers, healthcare providers, and high-growth businesses. Each service below is modular: pick a single service to start, or combine them into an automated client acquisition engine."
+    text: "This proposal focuses on conversion-driven AI and human-shot videos paired with landing pages and paid-ad funnels for high-growth businesses."
   },
   pricingSummary: {
     heading: "Pricing Summary",
     columns: ["Service", "US Dollar ($)", "Indian Rupee (₹)", "Monthly / Usage"],
     rows: [
-      ["AI Calling System", "$120 (setup + agent)", "₹10,000 (setup + agent)", "$0.10 / min • ₹7 / min"],
       ["AI Videos (UGC / Storytelling Ads)", "$40 / video", "₹3,000 / video", "Bulk packages available"],
       ["Human Videos (UGC / Real Shoot)", "$40 / video (min. 2)", "₹3,000 / video (min. 2)", "On-location shoot & edit"],
-      ["Healthcare Management System", "$500 (one-time)", "₹40,000 (one-time)", "Full portal + doctor EMR"],
-      ["Website Development (Basic)", "$500 (one-time)", "₹40,000 (one-time)", "Incl. 3-yr hosting + 1-yr email"],
-      ["Website Development (Advanced)", "$1,100 (one-time)", "₹90,000 (one-time)", "Incl. 3-yr hosting + 1-yr email"],
       ["Standalone Project Landing Page", "$120 / page", "₹10,000 / page", "High-converting funnel page"],
-      ["Ads Campaign & Funnel Setup", "$120 (setup)", "₹10,000 (setup)", "Meta & Google Ads tracking"],
-      ["WhatsApp Lead Automation", "$120 (setup)", "₹10,000 (setup)", "+ Meta WhatsApp API charges"]
+      ["Ads Campaign & Funnel Setup", "$120 (setup)", "₹10,000 (setup)", "Meta & Google Ads tracking"]
     ],
-    note: "Official transparent dual pricing for US ($) and India (₹) clients across individual modular services or full growth packages."
+    note: "Transparent dual pricing for video production, landing pages, and acquisition funnels."
   },
   services: [
     {
       number: 1,
-      id: "ai-calling",
-      title: "1. AI Calling System",
-      pricing: [
-        { label: "Setup + Agent Creation:", value: "$120 / ₹10,000 (one-time)" },
-        { label: "Usage:", value: "$0.10 / min ($ USD) • ₹7 / min (₹ INR)" }
-      ],
-      sections: [
-        {
-          heading: "What's Included",
-          features: [
-            "AI inbound & outbound calling with instant automated callback on enquiry",
-            "Lead qualification — budget, timeline, location, and requirement screening",
-            "Information sharing, FAQ handling, and dynamic conversational answers",
-            "Lead verification, appointment scheduling, and site visit booking",
-            "Automated call summaries, audio transcription, and lead disposition tracking",
-            "Seamless live human transfer for hot, ready-to-buy leads",
-            "CRM integration and automated webhook synchronization",
-            "Custom AI knowledge base trained specifically on your business & inventory"
-          ]
-        }
-      ]
-    },
-    {
-      number: 2,
       id: "ai-videos-ugc",
-      title: "2. AI & Human UGC Videos",
+      title: "1. AI & Human UGC Videos",
       sections: [
         {
           heading: "AI Videos (UGC / Storytelling Ads)",
@@ -513,72 +359,9 @@ const proposalData = {
       ]
     },
     {
-      number: 3,
-      id: "healthcare",
-      title: "3. Healthcare Management System",
-      pricing: [
-        { label: "Setup:", value: "$500 / ₹40,000 (one-time complete system)" },
-        { label: "Deployment:", value: "Full web portal + admin & doctor dashboards" }
-      ],
-      sections: [
-        {
-          heading: "Core System Capabilities",
-          features: [
-            "Doctor & Specialist Profiles with dynamic availability schedules",
-            "Patient Appointment Booking System (online self-booking + reception desk)",
-            "Electronic Health Records (EHR) & complete patient consultation history",
-            "Automated WhatsApp & SMS appointment confirmations, reminders & follow-ups",
-            "Digital Prescription & Medical Billing / Invoice Generation",
-            "Role-Based Access: Admin, Receptionist, Doctor, and Patient access levels",
-            "Patient Queue Management & real-time daily appointment overview",
-            "Fast inquiry capture, callback requests, and hospital contact routing"
-          ]
-        },
-        {
-          heading: "Workflow Architecture",
-          text: "Patient Enquiry / Booking → Instant WhatsApp Confirmation → Queue Allocation → Doctor Consultation & Digital Prescription → Billing → Automated Follow-up Reminder"
-        }
-      ]
-    },
-    {
-      number: 4,
-      id: "website",
-      title: "4. Website Development (Basic & Advanced)",
-      pricing: [
-        { label: "Basic Website:", value: "$500 / ₹40,000 (one-time)" },
-        { label: "Advanced Website:", value: "$1,100 / ₹90,000 (one-time)" },
-        { label: "Included:", value: "3 years hosting + 1 year custom email hosting" }
-      ],
-      sections: [
-        {
-          heading: "Basic Website ($500 / ₹40,000)",
-          features: [
-            "Modern, mobile-responsive corporate / business website (Up to 6 core pages)",
-            "Home, About Us, Services / Listings, Contact Us, Testimonials & FAQ",
-            "Interactive property/service showcase with photo gallery and inquiry form",
-            "Click-to-WhatsApp, direct phone call button, and email notification on leads",
-            "3 years premium cloud hosting + 1 year custom business email included",
-            "SEO-ready structure, meta tags, Google Analytics & Meta Pixel integration"
-          ]
-        },
-        {
-          heading: "Advanced Website ($1,100 / ₹90,000)",
-          features: [
-            "Full-scale custom portal architecture with advanced dynamic features",
-            "Multi-category filtering: Location, budget, amenities, BHK / product specifications",
-            "Interactive floor plans, virtual tours, downloadable brochures & price breakdown",
-            "Custom Admin Panel with property, user, and lead pipeline management",
-            "Site Visit & Calendar booking system with automated confirmation & reschedule",
-            "High-speed CDN performance optimization, schema markup & CRM webhook sync",
-            "Includes 3 years hosting, 1 year business email, SSL & priority technical support"
-          ]
-        }
-      ]
-    },
-    {
-      number: 5,
+      number: 2,
       id: "landing-ads",
-      title: "5. Landing Page & Ads / Funnel",
+      title: "2. Landing Page & Ads / Funnel",
       pricing: [
         { label: "Landing Page:", value: "$120 / ₹10,000 per page" },
         { label: "Ads & Funnel Setup:", value: "$120 / ₹10,000 (one-time)" }
@@ -605,32 +388,6 @@ const proposalData = {
           ]
         }
       ]
-    },
-    {
-      number: 6,
-      id: "whatsapp-automation",
-      title: "6. WhatsApp Lead Automation",
-      pricing: [
-        { label: "Setup:", value: "$120 / ₹10,000 (one-time)" },
-        { label: "Monthly:", value: "$40 – $120 / ₹3,000 – ₹10,000 + API Charges" }
-      ],
-      sections: [
-        {
-          heading: "What's Included",
-          features: [
-            "Instant lead response with automated greeting within 3 seconds of inquiry",
-            "Automated qualification questionnaire (budget, preference, timeline)",
-            "Automated delivery of property brochures, PDF pricing, and video links",
-            "Smart appointment / site visit scheduling and reminder sequence",
-            "Sales team alerts with instant lead summary notification",
-            "CRM synchronization and seamless human handoff when lead requests agent"
-          ]
-        },
-        {
-          heading: "Automation Flow",
-          text: "Lead Generated → Instant WhatsApp Greeting → Qualification Questions → Brochure Delivery → Appointment Booking → Sales Team Alert"
-        }
-      ]
     }
   ],
   commercialTerms: {
@@ -640,26 +397,6 @@ const proposalData = {
         icon: "megaphone",
         title: "Ad Spend Excluded",
         text: "Meta/Google ad spend is paid directly to advertising platforms and not included in service fees."
-      },
-      {
-        icon: "message",
-        title: "WhatsApp API Charges",
-        text: "Official WhatsApp Business API message charges are billed directly by Meta/provider."
-      },
-      {
-        icon: "phone",
-        title: "AI Calling Usage",
-        text: "AI Calling usage ($0.10/min USD / ₹7/min INR) is billed transparently based on actual completed call duration."
-      },
-      {
-        icon: "cpu",
-        title: "AI / LLM API Usage",
-        text: "Third-party AI/LLM token usage is charged at actual cost or client API key."
-      },
-      {
-        icon: "globe",
-        title: "Domain & Hosting Terms",
-        text: "3-year hosting and 1-year business email are included. Domain registration or renewal is separate."
       },
       {
         icon: "plane",
@@ -680,7 +417,7 @@ const proposalData = {
   },
   nextSteps: {
     heading: "Next Steps",
-    text: "Choose the services that fit your current stage — start with any single service, or combine the website, AI calling, and WhatsApp automation into one connected lead pipeline. Get in touch to finalise scope and timelines."
+    text: "Choose AI or human-shot videos, a standalone landing page, or combine them with an ads funnel. Get in touch to finalise scope and timelines."
   }
 };
 
@@ -694,36 +431,6 @@ const shortFormVideos = [
   { type: "ugc", tag: "AI UGC", url: "https://player.cloudinary.com/embed/?cloud_name=dobulag2p&public_id=0404_itrkrs" }
 ];
 
-const clientWebsites = [
-  {
-    title: "Tarz HMS",
-    domain: "hms.tarztech.com",
-    liveUrl: "http://hms.tarztech.com/",
-    category: "Healthcare Management System",
-    badge: "Live System",
-    description: "NABH-compliant hospital management software for OPD token queues, e-prescriptions, GST itemized billing, IPD bed wards, and multi-tenant clinical dashboards.",
-    tags: ["NABH Compliant", "OPD & IPD", "GST Billing", "Doctor EMR"]
-  },
-  {
-    title: "hmRide",
-    domain: "hmride.com",
-    liveUrl: "https://www.hmride.com/",
-    category: "Mobility & Carpooling Platform",
-    badge: "Production App",
-    description: "India's community-powered carpooling app featuring Aadhaar-verified travel, Women Only mode, live GPS location tracking, and route deviation alerts.",
-    tags: ["Aadhaar Verified", "Women-Only Mode", "Live GPS Tracking", "Corporate Circles"]
-  },
-  {
-    title: "Tarz Technologies",
-    domain: "tarztech.com",
-    liveUrl: "https://www.tarztech.com/",
-    category: "Tech Agency & Custom Software",
-    badge: "Agency Platform",
-    description: "High-performance digital engineering platform building scalable custom web applications, mobile apps, business automations, and AI growth solutions.",
-    tags: ["Full-Stack Web", "Mobile Apps", "AI Automations", "Cloud Systems"]
-  }
-];
-
 export default function OfferPage() {
   const [currency] = useState(detectCurrency);
   const priceIdx = currency === "USD" ? 1 : 2;
@@ -733,8 +440,7 @@ export default function OfferPage() {
   const [isPlayingVsl, setIsPlayingVsl] = useState(false);
   const [creativeFilter, setCreativeFilter] = useState("all");
   const [playingIndex, setPlayingIndex] = useState(null);
-  const [activeServiceTab, setActiveServiceTab] = useState("ai-calling");
-  const [pricingMode, setPricingMode] = useState("calc");
+  const [activeServiceTab, setActiveServiceTab] = useState("ai-videos-ugc");
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -1011,7 +717,7 @@ export default function OfferPage() {
 
           {/* TRUST BAR */}
           <div className="trust-bar">
-            <span className="trust-text">Trusted by <strong>50+ High-Growth</strong> Agencies, Developers &amp; Healthcare Leaders</span>
+            <span className="trust-text">Trusted by <strong>50+ High-Growth</strong> Agencies, Developers &amp; Business Leaders</span>
           </div>
         </div>
       </section>
@@ -1240,55 +946,6 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* CLIENT WEBSITES PORTFOLIO SHOWCASE SECTION */}
-      <section id="websites">
-        <div className="container">
-          <div className="section-title">
-            <div className="hero-label">FEATURED PLATFORMS</div>
-            <h2>Websites &amp; Systems We've Built</h2>
-            <p>Live, production-grade web systems, mobile platforms &amp; enterprise software.</p>
-          </div>
-
-          <div className="minimal-websites-grid">
-            {clientWebsites.map((site, idx) => (
-              <a
-                key={idx}
-                href={site.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="minimal-website-card"
-              >
-                <div className="minimal-card-top">
-                  <span className="minimal-card-category">{site.category}</span>
-                  <span className="minimal-card-badge">
-                    <span className="live-dot"></span> {site.badge}
-                  </span>
-                </div>
-
-                <div className="minimal-card-main">
-                  <h3 className="minimal-card-title">{site.title}</h3>
-                  <div className="minimal-card-domain">
-                    {site.domain} <span className="arrow-icon">↗</span>
-                  </div>
-                  <p className="minimal-card-desc">{site.description}</p>
-                </div>
-
-                <div className="minimal-card-tags">
-                  {site.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="minimal-tag">{tag}</span>
-                  ))}
-                </div>
-
-                <div className="minimal-card-action">
-                  <span>Visit Live Platform</span>
-                  <span className="minimal-action-btn">↗</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* SHORT FORM SAMPLES SHOWCASE */}
       <section id="short-form-samples">
         <div className="container">
@@ -1361,70 +1018,11 @@ export default function OfferPage() {
         <div className="container">
           <div className="section-title">
             <div className="hero-label">— PRICING &amp; PACKAGES</div>
-            <h2>Simple plans. Transparent pricing.</h2>
-            <p>Choose between our complete fixed acquisition plans or custom build your exact package with our live calculator.</p>
+            <h2>Build your video and funnel package.</h2>
+            <p>Select the video production and funnel services you need for a transparent estimate.</p>
           </div>
 
-          <div className="pricing-mode-toggle">
-            <button
-              className={`pricing-mode-btn${pricingMode === 'calc' ? ' active' : ''}`}
-              onClick={() => setPricingMode('calc')}
-            >
-              Custom Calculator
-            </button>
-            <button
-              className={`pricing-mode-btn${pricingMode === 'plans' ? ' active' : ''}`}
-              onClick={() => setPricingMode('plans')}
-            >
-              Simple Fixed Plans
-            </button>
-          </div>
-
-          {pricingMode === 'calc' && (
-            <PricingCalculator currency={currency} />
-          )}
-
-          {pricingMode === 'plans' && (
-            <div>
-              <div className="plans-grid">
-                {fixedPlans.map((plan) => (
-                  <div
-                    key={plan.name}
-                    className={`plan-card${plan.popular ? ' plan-card--popular' : ''}`}
-                  >
-                    {plan.popular && <div className="plan-popular-badge">MOST POPULAR</div>}
-                    <div className="plan-name">{plan.name}</div>
-                    <div className="plan-desc">{plan.desc}</div>
-                    <div className="plan-price">
-                      {currency === "USD" ? plan.priceUSD : plan.priceINR} <span>{plan.period}</span>
-                    </div>
-                    <div className="plan-billed">{currency === "USD" ? plan.billedUSD : plan.billedINR}</div>
-                    <ul className="plan-features">
-                      {plan.features.map((feat) => (
-                        <li key={feat}>{feat}</li>
-                      ))}
-                    </ul>
-                    <a
-                      href="#cta"
-                      className={`plan-btn${plan.popular ? ' plan-btn--primary' : ''}`}
-                    >
-                      {plan.btnText}
-                    </a>
-                  </div>
-                ))}
-              </div>
-
-              <div className="plan-guarantee">
-                <div className="guarantee-icon"><Icon name="shieldCheck" /></div>
-                <div>
-                  <div className="guarantee-title">30-day performance guarantee</div>
-                  <div className="guarantee-desc">
-                    If we don't deliver tested ad variations and launch your pipeline within your first 30 days, we'll keep iterating at no extra cost. That's how confident we are in our execution.
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          <PricingCalculator currency={currency} />
         </div>
       </section>
 
@@ -1478,8 +1076,8 @@ export default function OfferPage() {
             <div>
               <div className="offer-footer-logo">wstatemedia</div>
               <p className="offer-footer-tagline">
-                AI-powered growth &amp; acquisition systems.<br />
-                Creatives. Funnels. Automation. Systems.
+                Conversion-focused video and acquisition funnels.<br />
+                Creatives. Landing pages. Paid ads.
               </p>
             </div>
             <div>
@@ -1487,10 +1085,7 @@ export default function OfferPage() {
               <ul className="offer-footer-links">
                 <li>AI Videos (UGC &amp; Storytelling Ads)</li>
                 <li>Human Videos (UGC &amp; Real Shoot)</li>
-                <li>Healthcare Management System</li>
-                <li>Websites (Basic &amp; Advanced)</li>
                 <li>Landing Pages &amp; Ads Funnel</li>
-                <li>AI Calling &amp; WhatsApp Automation</li>
               </ul>
             </div>
             <div>
